@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="15dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/ten"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="My Order"
+            android:textStyle="bold"
+            android:textSize="27dp"
+            android:gravity="center"/>
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="28dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_cart"
+            android:layout_alignParentRight="true" />
+        <com.google.android.material.tabs.TabLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ten"
+            android:id="@+id/TabLayout"/>
+        <androidx.viewpager2.widget.ViewPager2
+            android:layout_width="match_parent"
+            android:layout_height="518dp"
+            android:id="@+id/ViewPager"
+            android:layout_below="@id/TabLayout"/>
+    </RelativeLayout>
+
+</ScrollView>

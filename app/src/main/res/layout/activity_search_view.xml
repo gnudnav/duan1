@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.SearchViewActivity"
+    android:layout_marginHorizontal="15dp"
+    android:layout_marginTop="10dp">
+    <ImageView
+        android:layout_marginTop="23dp"
+        android:id="@+id/ic_back"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_back1"/>
+    <androidx.cardview.widget.CardView
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/cardView"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ic_back"
+        app:cardCornerRadius="20dp">
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:backgroundTint="@null"
+            android:background="@drawable/custom_searchview"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:queryHint="Search Here"
+            app:iconifiedByDefault="false"/>
+    </androidx.cardview.widget.CardView>
+    <ImageView
+        android:layout_marginTop="28dp"
+        android:id="@+id/ic_setting"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_setting"
+        android:layout_alignParentEnd="true"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ic_back"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp" />
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="15dp"
+    android:scrollbars="none">
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_person" />
+        <TextView
+            android:paddingLeft="10dp"
+            android:id="@+id/txt_ten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hi,Van Dung"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/img"/>
+        <TextView
+
+            android:paddingLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Let’ s go shopping"
+            android:layout_toRightOf="@id/img"
+            android:layout_below="@id/txt_ten"/>
+        <ImageView
+            android:id="@+id/ic_searchView"
+            android:layout_marginTop="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_search"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/txt_ten"
+            android:paddingLeft="150dp"/>
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/img_bell"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_bell"
+            android:layout_alignParentEnd="true"/>
+        <com.google.android.material.tabs.TabLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img"
+            android:id="@+id/TabLayout"/>
+        <androidx.viewpager2.widget.ViewPager2
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ViewPager"
+            android:layout_below="@id/TabLayout"/>
+    </RelativeLayout>
+
+
+
+</ScrollView>

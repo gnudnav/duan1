@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.LoginActivity"
+    android:orientation="vertical">
+    <TextView
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:text="Login Account"
+        android:textStyle="bold"
+        android:textSize="28dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:text="Please login with registered account"
+        android:layout_marginTop="5dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edttendangnhap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Create your username"
+            android:drawableStart="@drawable/ic_person1"
+            android:drawablePadding="20dp"
+            android:paddingStart="30dp"
+            android:textStyle="bold"
+            android:textColorHint="@color/black"
+            android:background="@drawable/custome_edt"
+            android:layout_marginHorizontal="30dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:endIconMode="password_toggle">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtmatkhau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_phone"
+            android:drawablePadding="20dp"
+            android:paddingStart="30dp"
+            android:hint="Create your password"
+            android:paddingLeft="30dp"
+            android:textStyle="bold"
+            android:textColorHint="@color/black"
+            android:background="@drawable/custome_edt"
+            android:layout_marginHorizontal="30dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/txtquenmk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="Forgot Password?"
+        android:layout_marginHorizontal="30dp"
+        android:textColor="#5458C0"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btndangnhap"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custome_btn"
+        android:backgroundTint="@null"
+        android:text="Sign In"
+        android:textColor="@color/white"
+        android:layout_marginHorizontal="40dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Or using other method"
+        android:gravity="center"
+        android:layout_marginTop="20dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/custome_register"
+        android:paddingLeft="30dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingRight="30dp">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/facebook"/>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up with Facebook"
+            android:textSize="20dp"
+            android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custome_register"
+        android:paddingLeft="40dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingRight="40dp">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/googlle"/>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up with Google"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

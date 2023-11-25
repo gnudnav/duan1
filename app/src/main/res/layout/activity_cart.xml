@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.Activity_Cart"
+    android:layout_marginHorizontal="15dp"
+    android:layout_marginTop="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/ic_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_back"/>
+        <TextView
+            android:id="@+id/txtten"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="140dp"
+            android:text="Cart"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/ic_back"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_cart"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtten"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recyclerView_cart"
+            android:text="Selected Item"
+            android:textStyle="bold"
+            android:textSize="25dp"/>
+    </RelativeLayout>
+
+</ScrollView>
