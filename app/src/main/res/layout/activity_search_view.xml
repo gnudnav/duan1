@@ -37,12 +37,20 @@
         android:layout_height="25dp"
         android:src="@drawable/ic_setting"
         android:layout_alignParentEnd="true"/>
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All"
+        android:layout_below="@id/cardView"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ic_back"
+        android:layout_below="@id/btn_all"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="50dp"
+        android:visibility="gone"/>
 </RelativeLayout>
