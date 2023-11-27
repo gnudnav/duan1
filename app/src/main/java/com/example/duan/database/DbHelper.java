@@ -62,12 +62,12 @@ public class DbHelper extends SQLiteOpenHelper {
         String tHoaDon="CREATE TABLE HOADON(mahoadon integer primary key autoincrement," +
                 "ngaytao text,trangthai integer,manguoidung integer references NGUOIDUNG(manguoidung))";
         db.execSQL(tHoaDon);
-        db.execSQL("INSERT INTO HOADON VALUES(1,'27/11/2023','1',1),(1,'27/11/2023','1',2)");
+        db.execSQL("INSERT INTO HOADON VALUES(1,'27/11/2023',1,1),(2,'27/11/2023',1,2)");
 
 
         String tCTHD="CREATE TABLE CTHD(macthd integer primary key autoincrement,masanpham integer references SANPHAM(masanpham),mahoadon integer references NGUOIDUNG(mahoadon),soluong integer)";
         db.execSQL(tCTHD);
-        db.execSQL("INSERT INTO CTHD VALUES(1,1,1,1),(1,2,1,3)");
+        db.execSQL("INSERT INTO CTHD VALUES(1,1,1,1),(2,2,1,3)");
 
     }
 

@@ -50,7 +50,7 @@ public class DetailActivity extends AppCompatActivity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(DetailActivity.this, "đã lưu thành công", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailActivity.this, "đã thêm thành công", Toast.LENGTH_SHORT).show();
             }
         });
 
