@@ -24,7 +24,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(tSanPham);
         db.execSQL("INSERT INTO SANPHAM VALUES(1,8600000,'img_breguet_breguettradition','Breguet Tradition 7057BB/G9/9W6','ic_brand_breguet',1,1),(2,1000000,'img_breguet_breguetclassic','Breguet Classicque 714BR/12/9WU','ic_brand_breguet',1,1)," +
                 "(3,900000,'img_breitling_avengerchronograph','Breitling Avenger Chronograph 45 Night Mission','ic_brand_breitling',2,1),(4,1000000,'img_breitling_beritling1884','Breitling Avenger Chronograph 45 Night Mission','ic_brand_breitling',2,1)," +
-                "(5,500000,'img_couple_casio_casiodoi','Casio Đôi-Quarts(Pin)-Dây Da','brand_chanel',3,1),(6,2100000,'img_couple_koi_koidoi','Koi Đôi-Quarts(Pin)-Dây Da','brand_chanel',3,1)," +
+                "(5,500000,'img_couple_casio_casiodoi','Casio Đôi-Quarts(Pin)-Dây Da','brand_casio',3,1),(6,2100000,'img_couple_koi_koidoi','Koi Đôi-Quarts(Pin)-Dây Da','brand_chanel',3,1)," +
                 "(7,1900000,'img_man_seiko_seiko5','Seiko 5 Sports 55th Anniversary Limited Edition','brand_chanel',1,1)," +
                 "(8,3600000,'img_chanel_j12caliber','j12caliber','brand_chanel',2,1)," +
                 "(9,2200000,'img_couple_certina_certinadoi','Certina Đôi-Kính Sapphire-Automatic','brand_chanel',3,1)," +
@@ -45,10 +45,10 @@ public class DbHelper extends SQLiteOpenHelper {
                 "(24,2000000,'img_couple_tissot_tissotdoi_sapphire','Tissot Đôi-Kính Sapphire-Quartz(Pin)-Dây Kim Loại','brand_tissot',3,1)");
         String tBrand="CREATE TABLE BRAND(mabrand integer primary key autoincrement,tenbrand text)";
         db.execSQL(tBrand);
-        db.execSQL("INSERT INTO BRAND VALUES(1,'ic_brand_breguet'),(2,'ic_brand_breitling'),(3,'ic_brand_chanel')," +
+        db.execSQL("INSERT INTO BRAND VALUES(1,'ic_brand_casio'),(2,'ic_brand_breitling'),(3,'ic_brand_chanel')," +
                 "(4,'ic_brand_chopard'),(5,'ic_brand_citizen'),(6,'ic_brand_doxa'),(7,'ic_brand_dw')," +
                 "(8,'ic_brand_hublot'),(9,'ic_brand_jaeger_lecoultre'),(10,'ic_brand_lacoste'),(11,'ic_brand_longines')," +
-                "(12,'ic_brand_r'),(13,'ic_brand_rado'),(14,'ic_brand_rolex'),(15,'ic_brand_tissot')");
+                "(12,'ic_brand_r'),(13,'ic_brand_rado'),(14,'ic_brand_rolex'),(15,'ic_brand_tissot'),(16,'ic_brand_breguet')");
 
 
         String tLoai="CREATE TABLE LOAI(maloai integer primary key autoincrement,tenloai text)";

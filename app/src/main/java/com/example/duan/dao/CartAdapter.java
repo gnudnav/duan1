@@ -72,7 +72,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
                 holder.txt_quantity.setText(String.valueOf(quantity));
             }
         });
-
     }
 
     @Override

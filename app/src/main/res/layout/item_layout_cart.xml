@@ -84,5 +84,4 @@
         android:layout_toRightOf="@id/linearLayout"
         android:layout_below="@id/loai"
         android:text="2,040,000 đ"/>
-
 </RelativeLayout>
