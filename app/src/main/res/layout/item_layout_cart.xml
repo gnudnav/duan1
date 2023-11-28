@@ -57,12 +57,13 @@
             android:src="@drawable/ic_giamquantity"/>
         <TextView
             android:id="@+id/txt_quantity"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
             android:layout_marginTop="2dp"
-            android:layout_width="wrap_content"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="10"
+            android:gravity="center"
             android:textStyle="bold"
             android:textSize="15dp"/>
         <ImageView

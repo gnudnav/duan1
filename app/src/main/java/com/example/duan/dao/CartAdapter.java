@@ -18,6 +18,7 @@ import com.example.duan.model.SanPham;
 import java.util.ArrayList;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
+    private int quantity=1;
     private Context context;
     private ArrayList<SanPham>list;
 
@@ -42,9 +43,35 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
 
         holder.img.setImageResource(imgSanPham);
         holder.ten.setText(list.get(position).getTen());
-        holder.loai.setText(String.valueOf(list.get(position).getMaloai()));
+
+        String loai="";
+        if(list.get(position).getMaloai()==1){
+            loai="Man";
+        }else if(list.get(position).getMaloai()==2){
+            loai="Woman";
+        }else {
+            loai="Couple";
+        }
+        holder.loai.setText(loai);
         holder.txt_quantity.setText(String.valueOf(list.get(position).getSoluong()));
         holder.gia.setText(String.valueOf(list.get(position).getGia()));
+
+        holder.dautru.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(quantity>1){
+                    quantity--;
+                    holder.txt_quantity.setText(String.valueOf(quantity));
+                }
+            }
+        });
+        holder.daucong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                quantity++;
+                holder.txt_quantity.setText(String.valueOf(quantity));
+            }
+        });
 
     }
 
@@ -57,6 +84,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
         private CheckBox checkBox;
         private ImageView img;
         private TextView ten,loai,txt_quantity,gia;
+        private ImageView dautru;
+        private ImageView daucong;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             img=itemView.findViewById(R.id.img);
@@ -64,6 +93,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
             loai=itemView.findViewById(R.id.loai);
             txt_quantity=itemView.findViewById(R.id.txt_quantity);
             gia=itemView.findViewById(R.id.gia);
+            daucong=itemView.findViewById(R.id.daucong);
+            dautru=itemView.findViewById(R.id.dautru);
         }
     }
 }

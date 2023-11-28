@@ -19,7 +19,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
-    private int quantity=0;
+    private int quantity=1;
     private TextView txt_quantity;
     private ImageView ic_cart;
     private Button btn_add;
