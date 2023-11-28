@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,9 +7,7 @@
     tools:context=".activity.Activity_Cart"
     android:layout_marginHorizontal="15dp"
     android:layout_marginTop="10dp">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
         <ImageView
             android:layout_marginTop="5dp"
             android:id="@+id/ic_back"
@@ -19,25 +17,54 @@
         <TextView
             android:id="@+id/txtten"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="140dp"
             android:text="Cart"
             android:textSize="25dp"
             android:textStyle="bold"
             android:layout_toRightOf="@id/ic_back"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_cart"
-            android:layout_marginTop="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtten"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_cart"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_below="@id/txtten"/>
+    <RelativeLayout
+        android:layout_marginBottom="70dp"
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/chu"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/recyclerView_cart"
-            android:text="Selected Item"
+            android:text="Selected Item ("
             android:textStyle="bold"
             android:textSize="25dp"/>
+        <TextView
+            android:id="@+id/soluong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:layout_toRightOf="@id/chu"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=")"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:layout_toRightOf="@id/soluong"/>
     </RelativeLayout>
+    <Button
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:text="Checkout"
+        android:layout_alignParentBottom="true"/>
 
-</ScrollView>
+
+</RelativeLayout>

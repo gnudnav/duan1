@@ -9,14 +9,16 @@ public class SanPham implements Serializable {
     private String ten;
     private String tenbrand;
     private int maloai;
+    private int soluong;
 
-    public SanPham(int masanpham, int gia, String imgsanpham, String ten, String tenbrand, int maloai) {
+    public SanPham(int masanpham, int gia, String imgsanpham, String ten, String tenbrand, int maloai, int soluong) {
         this.masanpham = masanpham;
         this.gia = gia;
         this.imgsanpham = imgsanpham;
         this.ten = ten;
         this.tenbrand = tenbrand;
         this.maloai = maloai;
+        this.soluong = soluong;
     }
 
     public int getMasanpham() {
@@ -65,5 +67,13 @@ public class SanPham implements Serializable {
 
     public void setMaloai(int maloai) {
         this.maloai = maloai;
+    }
+
+    public int getSoluong() {
+        return soluong;
+    }
+
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
     }
 }

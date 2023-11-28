@@ -60,6 +60,7 @@ public class DetailActivity extends AppCompatActivity {
         ImageView dautru=findViewById(R.id.dautru);
         ImageView daucong=findViewById(R.id.daucong);
         txt_quantity=findViewById(R.id.txt_quantity);
+
         dautru.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,14 +85,14 @@ public class DetailActivity extends AppCompatActivity {
 
         txt_tensanpham.setText(sanPham.getTen());
         txt_giasanpham.setText(String.valueOf(sanPham.getGia()));
-
+        txt_quantity.setText(String.valueOf(sanPham.getSoluong()));
     }
     private void tang(){
         quantity++;
         updateQuantity();
     }
     private void giam(){
-        if(quantity>0){
+        if(quantity>1){
             quantity--;
             updateQuantity();
         }
