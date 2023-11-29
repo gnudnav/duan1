@@ -2,7 +2,6 @@ package com.example.duan.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,11 +13,7 @@ import android.widget.Toast;
 import com.example.duan.R;
 import com.example.duan.model.SanPham;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.ArrayList;
-
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity  {
     private int quantity=1;
     private TextView txt_quantity;
     private ImageView ic_cart,ic_heart;
@@ -53,6 +48,9 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(DetailActivity.this, "đã thêm thành công", Toast.LENGTH_SHORT).show();
+                txt_tensanpham.setText(sanPham.getTen());
+                txt_giasanpham.setText(String.valueOf(sanPham.getGia()));
+                txt_quantity.setText(String.valueOf(quantity));
             }
         });
         ic_heart.setOnClickListener(new View.OnClickListener() {
