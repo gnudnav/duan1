@@ -1,31 +1,22 @@
 package com.example.duan.dao;
-
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan.database.DbHelper;
 import com.example.duan.model.SanPham;
 
 import java.util.ArrayList;
 
-public class SanPhamDao {
+public class MyOrderDao {
     private DbHelper dbHelper;
-    public SanPhamDao(Context context){
+    public MyOrderDao(Context context){
         dbHelper=new DbHelper(context);
     }
-
-    public ArrayList<SanPham> listgetDSSANPHAM(){
-        ArrayList<SanPham> list=new ArrayList<>();
+    public ArrayList<SanPham>getlistDSMyOrder(){
+        ArrayList<SanPham>list=new ArrayList<>();
         SQLiteDatabase sqLiteDatabase=dbHelper.getReadableDatabase();
-        Cursor cursor=sqLiteDatabase.rawQuery("SELECT * FROM SANPHAM",null);
+        Cursor cursor=sqLiteDatabase.rawQuery("SELECT * FROM HOADON",null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do {

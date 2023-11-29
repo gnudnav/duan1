@@ -8,14 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.duan.R;
-import com.example.duan.dao.CartAdapter;
+import com.example.duan.adapter.CartAdapter;
 import com.example.duan.dao.SanPhamDao;
 import com.example.duan.model.SanPham;
 import com.google.android.material.snackbar.Snackbar;
@@ -59,14 +58,14 @@ public class Activity_Cart extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                final int position=viewHolder.getAbsoluteAdapterPosition();
+                final int position = viewHolder.getAbsoluteAdapterPosition();
 
                 new AlertDialog.Builder(Activity_Cart.this)
                         .setMessage("Bạn có chắc chắn muốn xóa mục này?")
                         .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                // Xử lý khi người dùng chọn "Đồng ý"
+                //                 Xử lý khi người dùng chọn "Đồng ý"
                                 list.remove(position);
                                 cartAdapter.notifyDataSetChanged();
                             }
@@ -81,10 +80,11 @@ public class Activity_Cart extends AppCompatActivity {
                         .show();
             }
         });
-        itemTouchHelper.attachToRecyclerView(recyclerView_cart);
-        //xoa item
+                itemTouchHelper.attachToRecyclerView(recyclerView_cart);
+                //xoa item
 
-    }
+            }
+
     private void showConfirmationSnackbar(String removedItem) {
         Snackbar.make(findViewById(android.R.id.content),
                 "Đã xóa: " + removedItem, Snackbar.LENGTH_LONG).show();

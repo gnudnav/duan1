@@ -1,4 +1,4 @@
-package com.example.duan.dao;
+package com.example.duan.adapter;
 
 import android.app.Activity;
 import android.content.Context;
