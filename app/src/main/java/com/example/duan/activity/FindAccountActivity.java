@@ -31,7 +31,7 @@ public class FindAccountActivity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FindAccountActivity.this, LoginActivity.class));
+                startActivity(new Intent(FindAccountActivity.this, Activity_Login.class));
             }
         });
         btnxacnhan.setOnClickListener(new View.OnClickListener() {

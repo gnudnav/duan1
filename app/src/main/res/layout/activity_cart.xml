@@ -59,6 +59,7 @@
             android:layout_toRightOf="@id/soluong"/>
     </RelativeLayout>
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/checkout"
         android:layout_marginBottom="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

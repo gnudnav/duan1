@@ -41,7 +41,7 @@ public class RegistonActivity extends AppCompatActivity {
                     Toast.makeText(RegistonActivity.this, "Mời ban nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 } else if (check){
                     Toast.makeText(RegistonActivity.this, "Bạn đã đăng ký thành công", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(RegistonActivity.this, LoginActivity.class));
+                    startActivity(new Intent(RegistonActivity.this, Activity_Login.class));
                 }else{
                     Toast.makeText(RegistonActivity.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
                 }

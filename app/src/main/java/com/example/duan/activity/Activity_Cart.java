@@ -2,12 +2,14 @@ package com.example.duan.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 public class Activity_Cart extends AppCompatActivity {
     private ArrayList<SanPham>list;
     private CartAdapter cartAdapter;
+    private AppCompatButton checkout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,14 @@ public class Activity_Cart extends AppCompatActivity {
         ImageView ic_back=findViewById(R.id.ic_back);
         RecyclerView recyclerView_cart=findViewById(R.id.recyclerView_cart);
         TextView soluong=findViewById(R.id.soluong);
+        checkout=findViewById(R.id.checkout);
+
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Activity_Cart.this, Activity_Payment.class));
+            }
+        });
 
 
         ic_back.setOnClickListener(new View.OnClickListener() {

@@ -58,7 +58,7 @@ public class Welcome1Activity extends AppCompatActivity {
         txtAcount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Welcome1Activity.this,LoginActivity.class));
+                startActivity(new Intent(Welcome1Activity.this, Activity_Login.class));
             }
         });
 

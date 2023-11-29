@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.example.duan.R;
 import com.example.duan.dao.NguoiDungDao;
-import com.example.duan.database.DbHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ChangePassActivity extends AppCompatActivity {
@@ -35,7 +34,7 @@ public class ChangePassActivity extends AppCompatActivity {
         ic_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ChangePassActivity.this, LoginActivity.class));
+                startActivity(new Intent(ChangePassActivity.this, Activity_Login.class));
             }
         });
 
