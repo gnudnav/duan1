@@ -16,7 +16,9 @@ public class MyOrderDao {
     public ArrayList<SanPham>getlistDSMyOrder(){
         ArrayList<SanPham>list=new ArrayList<>();
         SQLiteDatabase sqLiteDatabase=dbHelper.getReadableDatabase();
-        Cursor cursor=sqLiteDatabase.rawQuery("SELECT * FROM HOADON",null);
+        Cursor cursor=sqLiteDatabase.rawQuery("SELECT CTHD.*, SANPHAM.gia, SANPHAM.imgsanpham, SANPHAM.ten AS tensanpham, SANPHAM.tenbrand, SANPHAM.maloai, SANPHAM.soluong\n" +
+                "FROM CTHD\n" +
+                "LEFT JOIN SANPHAM ON CTHD.masanpham = SANPHAM.masanpham;",null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do {

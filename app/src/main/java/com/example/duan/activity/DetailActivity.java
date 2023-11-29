@@ -21,8 +21,9 @@ import java.util.ArrayList;
 public class DetailActivity extends AppCompatActivity {
     private int quantity=1;
     private TextView txt_quantity;
-    private ImageView ic_cart;
+    private ImageView ic_cart,ic_heart;
     private Button btn_add;
+    private boolean isHeartRed=false;
 
 
     @Override
@@ -40,6 +41,7 @@ public class DetailActivity extends AppCompatActivity {
         ImageView img_sanpham=findViewById(R.id.img_sanpham);
         TextView txt_giasanpham=findViewById(R.id.txt_giasanpham);
         ic_cart=findViewById(R.id.ic_cart);
+        ic_heart=findViewById(R.id.heart);
         ic_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,6 +53,17 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(DetailActivity.this, "đã thêm thành công", Toast.LENGTH_SHORT).show();
+            }
+        });
+        ic_heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isHeartRed){
+                    ic_heart.setImageResource(R.drawable.ic_hearttttt);
+                }else {
+                    ic_heart.setImageResource(R.drawable.ic_img_heart_red);
+                }
+                isHeartRed=!isHeartRed;
             }
         });
 
