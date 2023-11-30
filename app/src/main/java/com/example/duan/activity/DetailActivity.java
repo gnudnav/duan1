@@ -48,6 +48,14 @@ public class DetailActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 Toast.makeText(DetailActivity.this, "đã thêm thành công", Toast.LENGTH_SHORT).show();
+                String tensanpham=txt_tensanpham.getText().toString();
+                String giasanpham=txt_giasanpham.getText().toString();
+                String soluong=txt_quantity.getText().toString();
+                String img=img_sanpham.toString();
+
+                txt_quantity.setText(String.valueOf(quantity));
+//                SanPham sanPham1=new SanPham(String.valueOf(giasanpham),)
+//                int gia, String imgsanpham, String ten, String tenbrand, int maloai, int soluong
             }
         });
         ic_heart.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +102,7 @@ public class DetailActivity extends AppCompatActivity  {
         txt_tensanpham.setText(sanPham.getTen());
         txt_giasanpham.setText(String.valueOf(sanPham.getGia()));
         txt_quantity.setText(String.valueOf(sanPham.getSoluong()));
+//        img_sanpham.setImageResource(Integer.parseInt(sanPham.getImgsanpham()));
     }
     private void tang(){
         quantity++;

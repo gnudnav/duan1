@@ -1,5 +1,6 @@
 package com.example.duan.dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -38,4 +39,20 @@ public class CartDao {
             return true;
         }
     }
+    public boolean themCart(SanPham sanPham){
+        SQLiteDatabase sqLiteDatabase=dbHelper.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put("masanpham",sanPham.getMasanpham());
+        contentValues.put("gia",sanPham.getGia());
+        contentValues.put("imgsanpham",sanPham.getImgsanpham());
+        contentValues.put("ten",sanPham.getTen());
+        contentValues.put("tenbrand",sanPham.getTenbrand());
+        contentValues.put("maloai",sanPham.getMaloai());
+        contentValues.put("soluong",sanPham.getSoluong());
+
+        long check=sqLiteDatabase.insert("CART",null,contentValues);
+        if(check==-1) return false;
+        else return true;
+    }
+
 }
