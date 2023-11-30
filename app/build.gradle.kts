@@ -51,4 +51,6 @@ dependencies {
     implementation ("me.relex:circleindicator:1.3.2")
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
 
+    implementation ("com.google.code.gson:gson:2.8.9")
+
 }

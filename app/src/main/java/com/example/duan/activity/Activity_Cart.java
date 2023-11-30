@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.example.duan.R;
 import com.example.duan.adapter.CartAdapter;
 import com.example.duan.dao.CartDao;
-import com.example.duan.dao.SanPhamDao;
 import com.example.duan.model.SanPham;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -114,5 +113,4 @@ public class Activity_Cart extends AppCompatActivity {
         Snackbar.make(findViewById(android.R.id.content),
                 "Đã xóa: " + removedItem, Snackbar.LENGTH_LONG).show();
     }
-
 }

@@ -48,9 +48,6 @@ public class DetailActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 Toast.makeText(DetailActivity.this, "đã thêm thành công", Toast.LENGTH_SHORT).show();
-                txt_tensanpham.setText(sanPham.getTen());
-                txt_giasanpham.setText(String.valueOf(sanPham.getGia()));
-                txt_quantity.setText(String.valueOf(quantity));
             }
         });
         ic_heart.setOnClickListener(new View.OnClickListener() {
