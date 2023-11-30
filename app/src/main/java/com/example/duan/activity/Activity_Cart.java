@@ -14,9 +14,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.duan.R;
 import com.example.duan.adapter.CartAdapter;
+import com.example.duan.dao.CartDao;
 import com.example.duan.dao.SanPhamDao;
 import com.example.duan.model.SanPham;
 import com.google.android.material.snackbar.Snackbar;
@@ -27,6 +29,7 @@ public class Activity_Cart extends AppCompatActivity {
     private ArrayList<SanPham>list;
     private CartAdapter cartAdapter;
     private AppCompatButton checkout;
+    private CartDao cartDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,8 @@ public class Activity_Cart extends AppCompatActivity {
         RecyclerView recyclerView_cart=findViewById(R.id.recyclerView_cart);
         TextView soluong=findViewById(R.id.soluong);
         checkout=findViewById(R.id.checkout);
+
+        cartDao=new CartDao(this);
 
         checkout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,8 +57,8 @@ public class Activity_Cart extends AppCompatActivity {
             }
         });
 
-        SanPhamDao sanPhamDao=new SanPhamDao(this);
-        list=sanPhamDao.listgetDSSANPHAM();
+        CartDao cartDao=new CartDao(this);
+        list=cartDao.listgetDSCart();
 
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         recyclerView_cart.setLayoutManager(linearLayoutManager);
@@ -72,13 +77,22 @@ public class Activity_Cart extends AppCompatActivity {
                 final int position = viewHolder.getAbsoluteAdapterPosition();
 
                 new AlertDialog.Builder(Activity_Cart.this)
+                        .setTitle("Thông Báo")
+                        .setIcon(R.drawable.ic_warning)
                         .setMessage("Bạn có chắc chắn muốn xóa mục này?")
                         .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                 //                 Xử lý khi người dùng chọn "Đồng ý"
-                                list.remove(position);
+                                int masanpham=list.get(position).getMasanpham();
+                                boolean check=cartDao.xoaCart(masanpham);
+                                if(check){
+                                    Toast.makeText(Activity_Cart.this, "Xóa Thành công", Toast.LENGTH_SHORT).show();
+                                }
+                                list.clear();
+                                list=cartDao.listgetDSCart();
                                 cartAdapter.notifyDataSetChanged();
+
                             }
                         })
                         .setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
@@ -94,7 +108,7 @@ public class Activity_Cart extends AppCompatActivity {
                 itemTouchHelper.attachToRecyclerView(recyclerView_cart);
                 //xoa item
 
-            }
+          }
 
     private void showConfirmationSnackbar(String removedItem) {
         Snackbar.make(findViewById(android.R.id.content),

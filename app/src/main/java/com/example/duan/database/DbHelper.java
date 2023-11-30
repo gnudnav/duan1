@@ -43,6 +43,12 @@ public class DbHelper extends SQLiteOpenHelper {
                 "(22,1200000,'img_man_casio_casioecb','Casio ECB-950DB-2ADF-Nam-Solar-Dây Kim Loại','brand_casio',1,1)," +
                 "(23,1000000,'img_chanel_j12caliber','j12caliber','brand_chanel',2,1)," +
                 "(24,2000000,'img_couple_tissot_tissotdoi_sapphire','Tissot Đôi-Kính Sapphire-Quartz(Pin)-Dây Kim Loại','brand_tissot',3,1)");
+
+        String tCart="CREATE TABLE CART(masanpham integer primary key autoincrement,gia integer,imgsanpham text,ten text," +
+                "tenbrand text references BRAND(tenbrand),maloai integer references LOAI(maloai),soluong integer)";
+        db.execSQL(tCart);
+        db.execSQL("INSERT INTO CART VALUES(1,8600000,'img_breguet_breguettradition','Breguet Tradition 7057BB/G9/9W6','ic_brand_breguet',1,1)");
+
         String tBrand="CREATE TABLE BRAND(mabrand integer primary key autoincrement,tenbrand text)";
         db.execSQL(tBrand);
         db.execSQL("INSERT INTO BRAND VALUES(1,'ic_brand_casio'),(2,'ic_brand_breitling'),(3,'ic_brand_chanel')," +
