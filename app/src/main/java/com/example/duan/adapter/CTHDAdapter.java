@@ -74,9 +74,7 @@ public class CTHDAdapter extends RecyclerView.Adapter<CTHDAdapter.ViewHolder>{
                 holder.txt_quantity.setText(String.valueOf(quantity));
             }
         });
-//        holder.checkBox.setChecked(sanPham.isSelected());
-        holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-        });
+
     }
 
     @Override
