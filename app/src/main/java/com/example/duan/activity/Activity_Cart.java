@@ -89,8 +89,8 @@ public class Activity_Cart extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                 //                 Xử lý khi người dùng chọn "Đồng ý"
-                                int masanpham=list.get(position).getMasanpham();
-                                boolean check=cartDao.xoaCart(masanpham);
+                                int macthd=list.get(position).getMacthd();
+                                boolean check=cartDao.xoaCart(macthd);
                                 if(check){
                                     Toast.makeText(Activity_Cart.this, "Xóa Thành công", Toast.LENGTH_SHORT).show();
                                 }

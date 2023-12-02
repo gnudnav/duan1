@@ -34,10 +34,10 @@ public class CTHDDao {
 
         return list;
     }
-    public boolean xoaCart(int masanpham){
+    public boolean xoaCart(int macthd){
         SQLiteDatabase sqLiteDatabase=dbHelper.getWritableDatabase();
 
-        int check=sqLiteDatabase.delete("CTHD","masanpham=?",new String[]{String.valueOf(masanpham)});
+        int check=sqLiteDatabase.delete("CTHD","macthd=?",new String[]{String.valueOf(macthd)});
         if(check<=0){
             return false;
         }else {
