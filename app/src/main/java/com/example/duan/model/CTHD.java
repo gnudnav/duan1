@@ -11,9 +11,6 @@ public class CTHD {
     private int maloai;
     private int soluong;
 
-    public CTHD(int masanpham, int gia, int i, String imgsanpham, int maloai) {
-    }
-
     public CTHD(int macthd, int masanpham, int mahd, int gia, String imgsanpham, String ten, String tenbrand, int maloai, int soluong) {
         this.macthd = macthd;
         this.masanpham = masanpham;

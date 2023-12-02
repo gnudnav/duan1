@@ -26,8 +26,6 @@ public class DetailActivity extends AppCompatActivity  {
     private Button btn_add;
     private boolean isHeartRed=false;
     private CTHDDao cthdDao;
-    private CTHDAdapter cthdAdapter;
-    private ArrayList<CTHD>list;
 
 
     @Override
@@ -39,12 +37,14 @@ public class DetailActivity extends AppCompatActivity  {
         if(bundle==null){
             return;
         }
+        cthdDao=new CTHDDao(this);
 
         SanPham sanPham= (SanPham) bundle.get("object");
         CTHD cthd=(CTHD) bundle.get("obiect");
         TextView txt_tensanpham=findViewById(R.id.txt_tensanpham);
         ImageView img_sanpham=findViewById(R.id.img_sanpham);
         TextView txt_giasanpham=findViewById(R.id.txt_giasanpham);
+
         ic_cart=findViewById(R.id.ic_cart);
         ic_heart=findViewById(R.id.heart);
         ic_cart.setOnClickListener(new View.OnClickListener() {
@@ -53,12 +53,22 @@ public class DetailActivity extends AppCompatActivity  {
                 startActivity(new Intent(DetailActivity.this,Activity_Cart.class));
             }
         });
-        cthdDao=new CTHDDao(this);
         btn_add=findViewById(R.id.btn_add);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(DetailActivity.this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+
+                int masanpham = sanPham.getMasanpham();
+
+                // Thêm vào bảng CTHD trong CTHDDao
+                if (cthdDao.themCTHD(masanpham)) { // Mã hóa đơn mặc định là 1
+                    // Thông báo thành công
+                    Toast.makeText(DetailActivity.this, "Thêm thành công vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Thông báo thất bại
+                    Toast.makeText(DetailActivity.this, "Thêm vào giỏ hàng thất bại", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         ic_heart.setOnClickListener(new View.OnClickListener() {

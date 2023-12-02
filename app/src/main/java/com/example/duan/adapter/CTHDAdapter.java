@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.duan.R;
 import com.example.duan.dao.CTHDDao;
 import com.example.duan.model.CTHD;
-import com.example.duan.model.SanPham;
 
 import java.util.ArrayList;
 
@@ -23,15 +22,10 @@ public class CTHDAdapter extends RecyclerView.Adapter<CTHDAdapter.ViewHolder>{
     private int quantity=1;
     private Context context;
     private ArrayList<CTHD>list;
-    private CTHDDao cthdDao;
 
-    public CTHDAdapter(Context context, ArrayList<CTHD> list, CTHDDao cthdDao) {
+    public CTHDAdapter(Context context, ArrayList<CTHD> list) {
         this.context = context;
         this.list = list;
-        this.cthdDao = cthdDao;
-    }
-    public void setData(ArrayList<CTHD> newData) {
-        list = newData;
     }
 
     @NonNull

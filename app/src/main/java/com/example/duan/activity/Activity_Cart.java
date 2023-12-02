@@ -20,7 +20,6 @@ import com.example.duan.R;
 import com.example.duan.adapter.CTHDAdapter;
 import com.example.duan.dao.CTHDDao;
 import com.example.duan.model.CTHD;
-import com.example.duan.model.SanPham;
 
 import java.util.ArrayList;
 
@@ -63,7 +62,7 @@ public class Activity_Cart extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         recyclerView_cart.setLayoutManager(linearLayoutManager);
-        cthdAdapter=new CTHDAdapter(this,list,cartDao);
+        cthdAdapter=new CTHDAdapter(Activity_Cart.this,list);
         recyclerView_cart.setAdapter(cthdAdapter);
 
 

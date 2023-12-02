@@ -44,20 +44,16 @@ public class CTHDDao {
             return true;
         }
     }
-    public void themCart(CTHD cthd){
-        SQLiteDatabase sqLiteDatabase=dbHelper.getWritableDatabase();
-        ContentValues contentValues=new ContentValues();
-        contentValues.put("masanpham", cthd.getMasanpham());
-        contentValues.put("gia", cthd.getGia());
-        contentValues.put("soluong", cthd.getSoluong());
-        contentValues.put("imgsanpham", cthd.getImgsanpham());
-        contentValues.put("tenloai", cthd.getMaloai());
-        // Các cột khác của bảng CTHD
+    public boolean themCTHD(int masanpham) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("masanpham", masanpham);
+        values.put("mahoadon",1);
 
-        // Thêm dữ liệu vào bảng CTHD
-        sqLiteDatabase.insert("CTHD", null,contentValues);
+        long result = db.insert("CTHD", null, values);
+        db.close();
 
-        sqLiteDatabase.close();
+        return result != -1;
     }
 
 
