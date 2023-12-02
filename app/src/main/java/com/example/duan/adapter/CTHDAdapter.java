@@ -10,22 +10,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan.R;
+import com.example.duan.dao.CTHDDao;
+import com.example.duan.model.CTHD;
 import com.example.duan.model.SanPham;
 
 import java.util.ArrayList;
 
-public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
+public class CTHDAdapter extends RecyclerView.Adapter<CTHDAdapter.ViewHolder>{
     private int quantity=1;
     private Context context;
-    private ArrayList<SanPham>list;
+    private ArrayList<CTHD>list;
+    private CTHDDao cthdDao;
 
-    public CartAdapter(Context context, ArrayList<SanPham> list) {
+    public CTHDAdapter(Context context, ArrayList<CTHD> list, CTHDDao cthdDao) {
         this.context = context;
         this.list = list;
+        this.cthdDao = cthdDao;
+    }
+    public void setData(ArrayList<CTHD> newData) {
+        list = newData;
     }
 
     @NonNull
@@ -38,6 +44,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         int imgSanPham=((Activity)context).getResources().getIdentifier(
                 list.get(position).getImgsanpham(),"drawable",((Activity)context).getPackageName()
         );
@@ -73,6 +80,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
                 holder.txt_quantity.setText(String.valueOf(quantity));
             }
         });
+//        holder.checkBox.setChecked(sanPham.isSelected());
+        holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        });
     }
 
     @Override
@@ -88,6 +98,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
         private ImageView daucong;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            checkBox=itemView.findViewById(R.id.chk_checkbox);
             img=itemView.findViewById(R.id.img);
             ten=itemView.findViewById(R.id.ten);
             loai=itemView.findViewById(R.id.loai);

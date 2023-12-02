@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp">
+    <RadioButton
+        android:id="@+id/radiobutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/txttennguoidung"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/radiobutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nguyễn Văn A"
+        android:textStyle="bold"
+        android:textSize="18dp"/>
+    <TextView
+        android:id="@+id/gach"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="17dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/txttennguoidung"
+        android:text="|"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+    <TextView
+        android:id="@+id/txtsdt"
+        android:layout_marginTop="22dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/gach"
+        android:layout_marginLeft="9dp"
+        android:text="0123456789"
+        android:textStyle="bold"
+        android:textSize="15dp"/>
+    <TextView
+        android:id="@+id/txtdiachi"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/radiobutton"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="5482 Adobe Falls Rd # 15San
+Diego, Califorina (CA),92129"
+        android:layout_below="@id/txttennguoidung"
+        android:textSize="15dp"/>
+    <TextView
+        android:id="@+id/txtsua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sửa"
+        android:textColor="#5458C0"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="18dp"
+        android:textSize="16dp"/>
+
+</RelativeLayout>

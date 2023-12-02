@@ -17,12 +17,20 @@
     <TextView
         android:layout_marginTop="10dp"
         android:id="@+id/ten"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:text="CITIZEN AUTOMATIC TSUYOSA"
         android:textStyle="bold"
         android:textSize="18dp"
         android:layout_toRightOf="@id/img"/>
+<!--    <TextView-->
+<!--        android:id="@+id/txtxoa"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Xóa"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:textColor="#FD0000"/>-->
     <TextView
         android:layout_marginTop="10dp"
         android:id="@+id/object"

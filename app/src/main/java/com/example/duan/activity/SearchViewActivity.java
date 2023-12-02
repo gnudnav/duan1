@@ -99,11 +99,9 @@ public class SearchViewActivity extends AppCompatActivity {
                 filteredList.add(sanPham);
             }
         }
-        if(filteredList.isEmpty()){
-            Toast.makeText(this, "Không tìm thấy", Toast.LENGTH_SHORT).show();
-        }else{
+
             sanPhamAdapter.setFilteredList(filteredList);
-        }
+
 }
     private void showDiaLog(){
         AlertDialog.Builder builder=new AlertDialog.Builder(SearchViewActivity.this);

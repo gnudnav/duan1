@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.Activity_Sanpham_Man"
-    android:layout_marginHorizontal="15dp">
+    android:layout_marginHorizontal="15dp"
+    android:scrollbars="none">
     <RelativeLayout
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"

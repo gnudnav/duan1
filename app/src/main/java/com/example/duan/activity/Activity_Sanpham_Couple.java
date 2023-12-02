@@ -79,10 +79,8 @@ public class Activity_Sanpham_Couple extends AppCompatActivity {
                 filteredList.add(sanPham);
             }
         }
-        if(filteredList.isEmpty()){
-            Toast.makeText(this, "Không tìm thấy", Toast.LENGTH_SHORT).show();
-        }else{
+
             sanPhamAdapter.setFilteredList(filteredList);
-        }
+
     }
 }

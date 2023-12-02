@@ -17,29 +17,31 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan.R;
-import com.example.duan.adapter.CartAdapter;
-import com.example.duan.dao.CartDao;
+import com.example.duan.adapter.CTHDAdapter;
+import com.example.duan.dao.CTHDDao;
+import com.example.duan.model.CTHD;
 import com.example.duan.model.SanPham;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
 public class Activity_Cart extends AppCompatActivity {
-    private ArrayList<SanPham>list;
-    private CartAdapter cartAdapter;
+    private ArrayList<CTHD>list;
+    private CTHDAdapter cthdAdapter;
     private AppCompatButton checkout;
-    private CartDao cartDao;
+    private CTHDDao cthdDao;
+    public RecyclerView recyclerView_cart;
+    public TextView soluongcheckbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
         ImageView ic_back=findViewById(R.id.ic_back);
-        RecyclerView recyclerView_cart=findViewById(R.id.recyclerView_cart);
-        TextView soluong=findViewById(R.id.soluong);
+        recyclerView_cart=findViewById(R.id.recyclerView_cart);
+        soluongcheckbox=findViewById(R.id.soluongcheckbox);
         checkout=findViewById(R.id.checkout);
 
-        cartDao=new CartDao(this);
+        cthdDao=new CTHDDao(this);
 
         checkout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,13 +58,17 @@ public class Activity_Cart extends AppCompatActivity {
             }
         });
 
-        CartDao cartDao=new CartDao(this);
-        list=cartDao.listgetDSCart();
+        CTHDDao cartDao=new CTHDDao(this);
+        list=cthdDao.listgetDSCart();
 
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         recyclerView_cart.setLayoutManager(linearLayoutManager);
-        cartAdapter=new CartAdapter(this,list);
-        recyclerView_cart.setAdapter(cartAdapter);
+        cthdAdapter=new CTHDAdapter(this,list,cartDao);
+        recyclerView_cart.setAdapter(cthdAdapter);
+
+
+
+
 
         //xoa item
         ItemTouchHelper itemTouchHelper=new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
@@ -89,8 +95,8 @@ public class Activity_Cart extends AppCompatActivity {
                                     Toast.makeText(Activity_Cart.this, "Xóa Thành công", Toast.LENGTH_SHORT).show();
                                 }
                                 list.clear();
-                                list=cartDao.listgetDSCart();
-                                cartAdapter.notifyDataSetChanged();
+                                list.addAll(cartDao.listgetDSCart());
+                                cthdAdapter.notifyDataSetChanged();
 
                             }
                         })
@@ -98,19 +104,14 @@ public class Activity_Cart extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 // Không làm gì nếu người dùng chọn hủy
-                                cartAdapter.notifyItemChanged(position);
+                                cthdAdapter.notifyItemChanged(position);
                             }
                         })
                         .show();
             }
         });
                 itemTouchHelper.attachToRecyclerView(recyclerView_cart);
-                //xoa item
+//                //xoa item
 
-          }
-
-    private void showConfirmationSnackbar(String removedItem) {
-        Snackbar.make(findViewById(android.R.id.content),
-                "Đã xóa: " + removedItem, Snackbar.LENGTH_LONG).show();
     }
 }

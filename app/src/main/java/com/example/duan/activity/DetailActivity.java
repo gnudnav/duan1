@@ -2,6 +2,7 @@ package com.example.duan.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan.R;
+import com.example.duan.adapter.CTHDAdapter;
+import com.example.duan.dao.CTHDDao;
+import com.example.duan.model.CTHD;
 import com.example.duan.model.SanPham;
+
+import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity  {
     private int quantity=1;
@@ -19,6 +25,9 @@ public class DetailActivity extends AppCompatActivity  {
     private ImageView ic_cart,ic_heart;
     private Button btn_add;
     private boolean isHeartRed=false;
+    private CTHDDao cthdDao;
+    private CTHDAdapter cthdAdapter;
+    private ArrayList<CTHD>list;
 
 
     @Override
@@ -32,6 +41,7 @@ public class DetailActivity extends AppCompatActivity  {
         }
 
         SanPham sanPham= (SanPham) bundle.get("object");
+        CTHD cthd=(CTHD) bundle.get("obiect");
         TextView txt_tensanpham=findViewById(R.id.txt_tensanpham);
         ImageView img_sanpham=findViewById(R.id.img_sanpham);
         TextView txt_giasanpham=findViewById(R.id.txt_giasanpham);
@@ -43,19 +53,12 @@ public class DetailActivity extends AppCompatActivity  {
                 startActivity(new Intent(DetailActivity.this,Activity_Cart.class));
             }
         });
+        cthdDao=new CTHDDao(this);
         btn_add=findViewById(R.id.btn_add);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(DetailActivity.this, "đã thêm thành công", Toast.LENGTH_SHORT).show();
-                String tensanpham=txt_tensanpham.getText().toString();
-                String giasanpham=txt_giasanpham.getText().toString();
-                String soluong=txt_quantity.getText().toString();
-                String img=img_sanpham.toString();
-
-                txt_quantity.setText(String.valueOf(quantity));
-//                SanPham sanPham1=new SanPham(String.valueOf(giasanpham),)
-//                int gia, String imgsanpham, String ten, String tenbrand, int maloai, int soluong
+                Toast.makeText(DetailActivity.this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
             }
         });
         ic_heart.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +105,16 @@ public class DetailActivity extends AppCompatActivity  {
         txt_tensanpham.setText(sanPham.getTen());
         txt_giasanpham.setText(String.valueOf(sanPham.getGia()));
         txt_quantity.setText(String.valueOf(sanPham.getSoluong()));
-//        img_sanpham.setImageResource(Integer.parseInt(sanPham.getImgsanpham()));
+        //ham hien thị hình ảnh lên detail
+        Bundle bundle1=getIntent().getExtras();
+        if(bundle1!=null){
+            SanPham sanPham1=(SanPham) bundle.getSerializable("object");
+            if(sanPham1!=null){
+                int imgSanPham=getResources().getIdentifier(sanPham1.getImgsanpham(),"drawable",getPackageName());
+                img_sanpham.setImageResource(imgSanPham);
+            }
+        }
+        //ham hien thị hình ảnh lên detail
     }
     private void tang(){
         quantity++;
@@ -117,4 +129,5 @@ public class DetailActivity extends AppCompatActivity  {
     private void updateQuantity(){
         txt_quantity.setText(String.valueOf(quantity));
     }
+
 }

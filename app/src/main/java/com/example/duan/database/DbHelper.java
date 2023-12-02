@@ -16,7 +16,8 @@ public class DbHelper extends SQLiteOpenHelper {
         String tNguoiDung="CREATE TABLE NGUOIDUNG(manguoidung integer primary key autoincrement,sdt integer," +
                 "email text,diachi text,tentaikhoan text,matkhau text,hoten text)";
         db.execSQL(tNguoiDung);
-        db.execSQL("INSERT INTO NGUOIDUNG VALUES(1,0123456789,'dung@gmal.com','dian','vandung','abc123','levandung')");
+        db.execSQL("INSERT INTO NGUOIDUNG VALUES(1,0123456789,'dung@gmal.com','5482 Adobe Falls Rd # 15San \n" +
+                "Diego, Califorina (CA),92129','vandung','abc123','levandung')");
 
 
         String tSanPham="CREATE TABLE SANPHAM(masanpham integer primary key autoincrement,gia integer,imgsanpham text,ten text," +
@@ -44,10 +45,11 @@ public class DbHelper extends SQLiteOpenHelper {
                 "(23,1000000,'img_chanel_j12caliber','j12caliber','brand_chanel',2,1)," +
                 "(24,2000000,'img_couple_tissot_tissotdoi_sapphire','Tissot Đôi-Kính Sapphire-Quartz(Pin)-Dây Kim Loại','brand_tissot',3,1)");
 
-        String tCart="CREATE TABLE CART(masanpham integer primary key autoincrement,gia integer,imgsanpham text,ten text," +
-                "tenbrand text references BRAND(tenbrand),maloai integer references LOAI(maloai),soluong integer)";
-        db.execSQL(tCart);
-        db.execSQL("INSERT INTO CART VALUES(1,8600000,'img_breguet_breguettradition','Breguet Tradition 7057BB/G9/9W6','ic_brand_breguet',1,1)");
+//        String tCart="CREATE TABLE CART(masanpham integer primary key autoincrement,gia integer,imgsanpham text,ten text," +
+//                "tenbrand text references BRAND(tenbrand),maloai integer references LOAI(maloai),soluong integer)";
+//        db.execSQL(tCart);
+//        db.execSQL("INSERT INTO CART VALUES(1,8600000,'img_breguet_breguettradition','Breguet Tradition 7057BB/G9/9W6','ic_brand_breguet',1,1)," +
+//                "(2,1000000,'img_breguet_breguetclassic','Breguet Classicque 714BR/12/9WU','ic_brand_breguet',1,1)");
 
         String tBrand="CREATE TABLE BRAND(mabrand integer primary key autoincrement,tenbrand text)";
         db.execSQL(tBrand);
@@ -55,7 +57,6 @@ public class DbHelper extends SQLiteOpenHelper {
                 "(4,'ic_brand_chopard'),(5,'ic_brand_citizen'),(6,'ic_brand_doxa'),(7,'ic_brand_dw')," +
                 "(8,'ic_brand_hublot'),(9,'ic_brand_jaeger_lecoultre'),(10,'ic_brand_lacoste'),(11,'ic_brand_longines')," +
                 "(12,'ic_brand_r'),(13,'ic_brand_rado'),(14,'ic_brand_rolex'),(15,'ic_brand_tissot'),(16,'ic_brand_breguet')");
-
 
         String tLoai="CREATE TABLE LOAI(maloai integer primary key autoincrement,tenloai text)";
         db.execSQL(tLoai);
@@ -71,9 +72,9 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO HOADON VALUES(1,1,1),(2,1,2)");
 
 
-        String tCTHD="CREATE TABLE CTHD(macthd integer primary key autoincrement,masanpham integer references SANPHAM(masanpham),mahoadon integer references NGUOIDUNG(mahoadon),soluong integer)";
+        String tCTHD="CREATE TABLE CTHD(macthd integer primary key autoincrement,masanpham integer references SANPHAM(masanpham),mahoadon integer references HOADON(mahoadon))";
         db.execSQL(tCTHD);
-        db.execSQL("INSERT INTO CTHD VALUES(1,1,1,1),(2,2,1,3)");
+        db.execSQL("INSERT INTO CTHD VALUES(1,1,1),(2,2,1)");
 
     }
 

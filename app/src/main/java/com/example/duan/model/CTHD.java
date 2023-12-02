@@ -1,9 +1,9 @@
 package com.example.duan.model;
 
-import java.io.Serializable;
-
-public class SanPham implements Serializable {
+public class CTHD {
+    private int macthd;
     private int masanpham;
+    private int mahd;
     private int gia;
     private String imgsanpham;
     private String ten;
@@ -11,8 +11,13 @@ public class SanPham implements Serializable {
     private int maloai;
     private int soluong;
 
-    public SanPham(int masanpham, int gia, String imgsanpham, String ten, String tenbrand, int maloai, int soluong) {
+    public CTHD(int masanpham, int gia, int i, String imgsanpham, int maloai) {
+    }
+
+    public CTHD(int macthd, int masanpham, int mahd, int gia, String imgsanpham, String ten, String tenbrand, int maloai, int soluong) {
+        this.macthd = macthd;
         this.masanpham = masanpham;
+        this.mahd = mahd;
         this.gia = gia;
         this.imgsanpham = imgsanpham;
         this.ten = ten;
@@ -21,13 +26,12 @@ public class SanPham implements Serializable {
         this.soluong = soluong;
     }
 
-    public SanPham(int gia, String imgsanpham, String ten, String tenbrand, int maloai, int soluong) {
-        this.gia = gia;
-        this.imgsanpham = imgsanpham;
-        this.ten = ten;
-        this.tenbrand = tenbrand;
-        this.maloai = maloai;
-        this.soluong = soluong;
+    public int getMacthd() {
+        return macthd;
+    }
+
+    public void setMacthd(int macthd) {
+        this.macthd = macthd;
     }
 
     public int getMasanpham() {
@@ -36,6 +40,14 @@ public class SanPham implements Serializable {
 
     public void setMasanpham(int masanpham) {
         this.masanpham = masanpham;
+    }
+
+    public int getMahd() {
+        return mahd;
+    }
+
+    public void setMahd(int mahd) {
+        this.mahd = mahd;
     }
 
     public int getGia() {
@@ -80,5 +92,9 @@ public class SanPham implements Serializable {
 
     public int getSoluong() {
         return soluong;
+    }
+
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
     }
 }
