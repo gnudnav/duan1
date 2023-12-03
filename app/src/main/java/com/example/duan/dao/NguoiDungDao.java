@@ -35,6 +35,4 @@ public class NguoiDungDao {
         long check=sqLiteDatabase.insert("NGUOIDUNG",null,contentValues);
         return check!=-1;
     }
-
-
 }

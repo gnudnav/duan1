@@ -17,7 +17,9 @@ public class DbHelper extends SQLiteOpenHelper {
                 "email text,diachi text,tentaikhoan text,matkhau text,hoten text)";
         db.execSQL(tNguoiDung);
         db.execSQL("INSERT INTO NGUOIDUNG VALUES(1,0123456789,'dung@gmal.com','5482 Adobe Falls Rd # 15San \n" +
-                "Diego, Califorina (CA),92129','vandung','abc123','levandung')");
+                "Diego, Califorina (CA),92129','vandung','abc123','levandung')," +
+                "(2,0145433539,'dung@gmal.com','5482 Adobe Falls Rd # 15San \\n\" +\n" +
+                "                \"Diego, Califorina (CA),92129','vanhai','abc123','levanhai')");
 
 
         String tSanPham="CREATE TABLE SANPHAM(masanpham integer primary key autoincrement,gia integer,imgsanpham text,ten text," +
@@ -64,7 +66,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String tHoaDon="CREATE TABLE HOADON(mahoadon integer primary key autoincrement," +
                 "trangthai integer,manguoidung integer references NGUOIDUNG(manguoidung))";
         db.execSQL(tHoaDon);
-        db.execSQL("INSERT INTO HOADON VALUES(1,1,1),(2,1,2)");
+        db.execSQL("INSERT INTO HOADON VALUES(1,1,1),(2,1,2),(3,1,1),(4,2,1)");
 
 
         String tCTHD="CREATE TABLE CTHD(macthd integer primary key autoincrement,masanpham integer references SANPHAM(masanpham),mahoadon integer references HOADON(mahoadon))";

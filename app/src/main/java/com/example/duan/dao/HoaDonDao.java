@@ -22,7 +22,7 @@ public class HoaDonDao {
         SQLiteDatabase sqLiteDatabase=dbHelper.getReadableDatabase();
         Cursor cursor=sqLiteDatabase.rawQuery("SELECT hd.mahoadon, hd.trangthai, nd.manguoidung, nd.sdt, nd.email, nd.diachi, nd.tentaikhoan, nd.matkhau, nd.hoten " +
                 "FROM HOADON hd " +
-                "JOIN NGUOIDUNG nd ON hd.manguoidung = nd.manguoidung",null);
+                "JOIN NGUOIDUNG nd ON hd.manguoidung = nd.manguoidung WHERE hd.trangthai=1 ",null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do {
@@ -35,9 +35,9 @@ public class HoaDonDao {
     public ArrayList<HoaDon> listgetHoaDon2(){
         ArrayList<HoaDon> list=new ArrayList<>();
         SQLiteDatabase sqLiteDatabase=dbHelper.getReadableDatabase();
-        Cursor cursor=sqLiteDatabase.rawQuery("SELECT hd.mahoadon,hd.trangthai,nd.manguoidung,nd.sdt,nd.email,nd.diachi,nd.tentaikhoan,nd.matkhau,nd.hoten\n" +
-                "FROM HOADON hd\n" +
-                "JOIN NGUOIDUNG nd ON hd.masanpham = nd.masanpham WHERE hd.trangthai=2",null);
+        Cursor cursor=sqLiteDatabase.rawQuery("SELECT hd.mahoadon, hd.trangthai, nd.manguoidung, nd.sdt, nd.email, nd.diachi, nd.tentaikhoan, nd.matkhau, nd.hoten " +
+                "FROM HOADON hd " +
+                "JOIN NGUOIDUNG nd ON hd.manguoidung = nd.manguoidung WHERE hd.trangthai=2 ",null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do {

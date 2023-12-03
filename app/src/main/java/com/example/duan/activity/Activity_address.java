@@ -22,6 +22,7 @@ public class Activity_address extends AppCompatActivity {
     private ImageView ic_back,img_add_address;
     private HoaDonDao hoaDonDao;
     private HoaDonAdapter hoaDonAdapter;
+    private RecyclerView recyclerView_address;
 
 
 
@@ -31,7 +32,7 @@ public class Activity_address extends AppCompatActivity {
         setContentView(R.layout.activity_address);
 
         ic_back=findViewById(R.id.ic_back);
-        RecyclerView recyclerView_address=findViewById(R.id.recyclerView_address);
+        recyclerView_address=findViewById(R.id.recyclerView_address);
 
         ic_back.setOnClickListener(new View.OnClickListener() {
             @Override
