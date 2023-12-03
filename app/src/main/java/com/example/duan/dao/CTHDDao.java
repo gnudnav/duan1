@@ -21,14 +21,14 @@ public class CTHDDao {
     public ArrayList<CTHD> listgetDSCart(){
         ArrayList<CTHD> list=new ArrayList<>();
         SQLiteDatabase sqLiteDatabase=dbHelper.getReadableDatabase();
-        Cursor cursor=sqLiteDatabase.rawQuery("SELECT cthd.macthd, cthd.masanpham, hoadon.mahoadon, sanpham.gia, sanpham.imgsanpham, sanpham.ten, sanpham.tenbrand, sanpham.maloai, sanpham.soluong\n" +
+        Cursor cursor=sqLiteDatabase.rawQuery("SELECT cthd.macthd, cthd.masanpham, hoadon.mahoadon,hoadon.trangthai,sanpham.gia, sanpham.imgsanpham, sanpham.ten, sanpham.tenbrand, sanpham.maloai, sanpham.soluong\n" +
                 "FROM CTHD cthd\n" +
                 "JOIN SANPHAM sanpham ON cthd.masanpham = sanpham.masanpham\n" +
                 "JOIN HOADON hoadon ON cthd.mahoadon = hoadon.mahoadon",null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do {
-                list.add(new CTHD(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2),cursor.getInt(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getInt(7),cursor.getInt(8)));
+                list.add(new CTHD(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2),cursor.getInt(3),cursor.getInt(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getInt(8),cursor.getInt(9)));
             }while (cursor.moveToNext());
         }
 

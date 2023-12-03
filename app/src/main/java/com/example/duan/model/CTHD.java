@@ -4,6 +4,7 @@ public class CTHD {
     private int macthd;
     private int masanpham;
     private int mahd;
+    private int trangthai;
     private int gia;
     private String imgsanpham;
     private String ten;
@@ -11,10 +12,12 @@ public class CTHD {
     private int maloai;
     private int soluong;
 
-    public CTHD(int macthd, int masanpham, int mahd, int gia, String imgsanpham, String ten, String tenbrand, int maloai, int soluong) {
+
+    public CTHD(int macthd, int masanpham, int mahd, int trangthai, int gia, String imgsanpham, String ten, String tenbrand, int maloai, int soluong) {
         this.macthd = macthd;
         this.masanpham = masanpham;
         this.mahd = mahd;
+        this.trangthai = trangthai;
         this.gia = gia;
         this.imgsanpham = imgsanpham;
         this.ten = ten;
@@ -45,6 +48,14 @@ public class CTHD {
 
     public void setMahd(int mahd) {
         this.mahd = mahd;
+    }
+
+    public int getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(int trangthai) {
+        this.trangthai = trangthai;
     }
 
     public int getGia() {
