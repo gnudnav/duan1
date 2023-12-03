@@ -55,6 +55,4 @@ public class CTHDDao {
 
         return result != -1;
     }
-
-
 }

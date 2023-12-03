@@ -35,4 +35,15 @@ public class SanPhamDao {
 
         return list;
     }
+
+    public void updateSoLuong(int masanpham,int soluong) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("soluong", soluong);
+
+        db.update("SANPHAM", values,"masanpham=?",new String[]{String.valueOf(masanpham)});
+
+        db.close();
+
+    }
 }

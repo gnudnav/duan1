@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.example.duan.R;
 import com.example.duan.adapter.CTHDAdapter;
 import com.example.duan.dao.CTHDDao;
+import com.example.duan.dao.SanPhamDao;
+import com.example.duan.database.DbHelper;
 import com.example.duan.model.CTHD;
 import com.example.duan.model.SanPham;
 
@@ -26,6 +28,7 @@ public class DetailActivity extends AppCompatActivity  {
     private Button btn_add;
     private boolean isHeartRed=false;
     private CTHDDao cthdDao;
+    private SanPhamDao sanPhamDao;
 
 
     @Override
@@ -38,6 +41,7 @@ public class DetailActivity extends AppCompatActivity  {
             return;
         }
         cthdDao=new CTHDDao(this);
+        sanPhamDao=new SanPhamDao(this);
 
         SanPham sanPham= (SanPham) bundle.get("object");
         CTHD cthd=(CTHD) bundle.get("obiect");
@@ -59,11 +63,13 @@ public class DetailActivity extends AppCompatActivity  {
             public void onClick(View view) {
 
                 int masanpham = sanPham.getMasanpham();
+                sanPhamDao.updateSoLuong(masanpham,quantity);
 
                 // Thêm vào bảng CTHD trong CTHDDao
                 if (cthdDao.themCTHD(masanpham)) { // Mã hóa đơn mặc định là 1
                     // Thông báo thành công
                     Toast.makeText(DetailActivity.this, "Thêm thành công vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                    sanPhamDao.updateSoLuong(masanpham,quantity);
                 } else {
                     // Thông báo thất bại
                     Toast.makeText(DetailActivity.this, "Thêm vào giỏ hàng thất bại", Toast.LENGTH_SHORT).show();
