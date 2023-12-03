@@ -12,16 +12,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan.R;
+import com.example.duan.model.HoaDon;
 import com.example.duan.model.NguoiDung;
 
 import java.util.ArrayList;
 
-public class NguoiDungAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class HoaDonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private Context context;
-    private ArrayList<NguoiDung>list;
+    private ArrayList<HoaDon>list;
 
-    public NguoiDungAdapter(Context context, ArrayList<NguoiDung> list) {
+    public HoaDonAdapter(Context context, ArrayList<HoaDon> list) {
         this.context = context;
         this.list = list;
     }
@@ -41,9 +42,6 @@ public class NguoiDungAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             viewHolder.txttenguoidung.setText(list.get(position).getHoten());
             viewHolder.txtsdt.setText(String.valueOf(list.get(position).getSdt()));
             viewHolder.txtdiachi.setText(list.get(position).getDiachi());
-
-
-
         }
     }
 

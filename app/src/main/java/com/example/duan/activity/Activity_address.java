@@ -10,19 +10,18 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.duan.R;
-import com.example.duan.adapter.BrandAdapter;
-import com.example.duan.adapter.NguoiDungAdapter;
-import com.example.duan.dao.BrandDao;
+import com.example.duan.adapter.HoaDonAdapter;
+import com.example.duan.dao.HoaDonDao;
 import com.example.duan.dao.NguoiDungDao;
-import com.example.duan.model.Brand;
+import com.example.duan.model.HoaDon;
 import com.example.duan.model.NguoiDung;
-import com.example.duan.model.SanPham;
 
 import java.util.ArrayList;
 
 public class Activity_address extends AppCompatActivity {
     private ImageView ic_back,img_add_address;
-    private NguoiDungDao nguoiDungDao;
+    private HoaDonDao hoaDonDao;
+    private HoaDonAdapter hoaDonAdapter;
 
 
 
@@ -47,13 +46,13 @@ public class Activity_address extends AppCompatActivity {
                 startActivity(new Intent(Activity_address.this, Activity_New_Address.class));
             }
         });
-        nguoiDungDao=new NguoiDungDao(this);
-        ArrayList<NguoiDung> list=nguoiDungDao.listgetDSNGUOIDUNG();
+        hoaDonDao=new HoaDonDao(this);
+        ArrayList<HoaDon> list=hoaDonDao.listgetHoaDon1();
 
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         recyclerView_address.setLayoutManager(linearLayoutManager);
-        NguoiDungAdapter nguoiDungAdapter=new NguoiDungAdapter(this,list);
-        recyclerView_address.setAdapter(nguoiDungAdapter);
+        hoaDonAdapter=new HoaDonAdapter(this,list);
+        recyclerView_address.setAdapter(hoaDonAdapter);
 
 
     }
