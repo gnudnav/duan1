@@ -39,7 +39,6 @@ public class Activity_Cart extends AppCompatActivity {
         recyclerView_cart=findViewById(R.id.recyclerView_cart);
         soluongcheckbox=findViewById(R.id.soluongcheckbox);
         checkout=findViewById(R.id.checkout);
-
         cthdDao=new CTHDDao(this);
 
         checkout.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +65,8 @@ public class Activity_Cart extends AppCompatActivity {
         recyclerView_cart.setAdapter(cthdAdapter);
 
 
-
+                int macthd=cthdAdapter.getItemCount();
+                soluongcheckbox.setText(String.valueOf(macthd));
 
 
         //xoa item
