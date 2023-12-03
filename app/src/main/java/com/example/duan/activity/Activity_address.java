@@ -54,7 +54,5 @@ public class Activity_address extends AppCompatActivity {
         recyclerView_address.setLayoutManager(linearLayoutManager);
         hoaDonAdapter=new HoaDonAdapter(this,list);
         recyclerView_address.setAdapter(hoaDonAdapter);
-
-
     }
 }

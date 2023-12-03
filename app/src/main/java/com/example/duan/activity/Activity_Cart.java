@@ -29,7 +29,8 @@ public class Activity_Cart extends AppCompatActivity {
     private AppCompatButton checkout;
     private CTHDDao cthdDao;
     public RecyclerView recyclerView_cart;
-    public TextView soluongcheckbox;
+    public TextView soluongcheckbox,emptyCartTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +40,18 @@ public class Activity_Cart extends AppCompatActivity {
         recyclerView_cart=findViewById(R.id.recyclerView_cart);
         soluongcheckbox=findViewById(R.id.soluongcheckbox);
         checkout=findViewById(R.id.checkout);
+        emptyCartTextView=findViewById(R.id.emptyCartTextView);
         cthdDao=new CTHDDao(this);
 
         checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Activity_Cart.this, Activity_Payment.class));
+                if(cthdDao.listgetDSCart().isEmpty()){
+                    Toast.makeText(Activity_Cart.this, "There must be at least 1 product in the cart", Toast.LENGTH_SHORT).show();
+                }else{
+                    startActivity(new Intent(Activity_Cart.this, Activity_Payment.class));
+                }
+
             }
         });
 
@@ -55,18 +62,23 @@ public class Activity_Cart extends AppCompatActivity {
                 finish();
             }
         });
-
-        CTHDDao cartDao=new CTHDDao(this);
         list=cthdDao.listgetDSCart();
+        if(list.isEmpty()){
+            hienthi();
+        }else{
+            emptyCartTextView.setVisibility(View.GONE);
+            recyclerView_cart.setVisibility(View.VISIBLE);
 
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
-        recyclerView_cart.setLayoutManager(linearLayoutManager);
-        cthdAdapter=new CTHDAdapter(Activity_Cart.this,list);
-        recyclerView_cart.setAdapter(cthdAdapter);
+            LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
+            recyclerView_cart.setLayoutManager(linearLayoutManager);
+            cthdAdapter=new CTHDAdapter(Activity_Cart.this,list);
+            recyclerView_cart.setAdapter(cthdAdapter);
 
 
-                int macthd=cthdAdapter.getItemCount();
-                soluongcheckbox.setText(String.valueOf(macthd));
+            soluong();
+        }
+
+
 
 
         //xoa item
@@ -89,13 +101,15 @@ public class Activity_Cart extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                 //                 Xử lý khi người dùng chọn "Đồng ý"
                                 int macthd=list.get(position).getMacthd();
-                                boolean check=cartDao.xoaCart(macthd);
+                                boolean check=cthdDao.xoaCart(macthd);
                                 if(check){
                                     Toast.makeText(Activity_Cart.this, "Xóa Thành công", Toast.LENGTH_SHORT).show();
+                                    hienthi();
                                 }
                                 list.clear();
-                                list.addAll(cartDao.listgetDSCart());
+                                list.addAll(cthdDao.listgetDSCart());
                                 cthdAdapter.notifyDataSetChanged();
+                                soluong();
 
                             }
                         })
@@ -111,6 +125,15 @@ public class Activity_Cart extends AppCompatActivity {
         });
                 itemTouchHelper.attachToRecyclerView(recyclerView_cart);
 //                //xoa item
+
+    }
+    private void hienthi(){
+        emptyCartTextView.setVisibility(View.VISIBLE);
+        recyclerView_cart.setVisibility(View.GONE);
+    }
+    private void soluong(){
+        int macthd=cthdAdapter.getItemCount();
+        soluongcheckbox.setText(String.valueOf(macthd));
 
     }
 }

@@ -54,7 +54,7 @@ public class Activity_Payment extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Activity_Payment.this,Activity_address.class));
+                startActivity(new Intent(Activity_Payment.this, Activity_New_Address.class));
             }
         });
         ic_back.setOnClickListener(new View.OnClickListener() {
