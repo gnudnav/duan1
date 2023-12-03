@@ -15,8 +15,10 @@ import android.widget.Toast;
 import com.example.duan.R;
 import com.example.duan.adapter.CTHDAdapter;
 import com.example.duan.dao.CTHDDao;
+import com.example.duan.dao.NguoiDungDao;
 import com.example.duan.fragment.Delivery_Fragment;
 import com.example.duan.model.CTHD;
+import com.example.duan.model.NguoiDung;
 
 import java.util.ArrayList;
 
@@ -38,6 +40,10 @@ public class Activity_Payment extends AppCompatActivity {
         btn_confirm=findViewById(R.id.btn_confirm);
         TextView txt_quantity=findViewById(R.id.txt_quantity);
         recyclerView_cthd=findViewById(R.id.recyclerView_cthd);
+
+        TextView txttennguoidung=findViewById(R.id.txt_tennguoidung);
+        TextView txtsdt=findViewById(R.id.txt_sdt);
+        TextView txtdiachii=findViewById(R.id.txt_diachi);
 
 
         cthdDao=new CTHDDao(this);

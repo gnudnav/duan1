@@ -63,7 +63,7 @@ public class DetailActivity extends AppCompatActivity  {
             public void onClick(View view) {
 
                 int masanpham = sanPham.getMasanpham();
-                sanPhamDao.updateSoLuong(masanpham,quantity);
+
 
                 // Thêm vào bảng CTHD trong CTHDDao
                 if (cthdDao.themCTHD(masanpham)) { // Mã hóa đơn mặc định là 1

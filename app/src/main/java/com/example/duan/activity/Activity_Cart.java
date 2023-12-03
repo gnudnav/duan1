@@ -63,11 +63,8 @@ public class Activity_Cart extends AppCompatActivity {
             }
         });
         list=cthdDao.listgetDSCart();
-        if(list.isEmpty()){
-            hienthi();
-        }else{
-            emptyCartTextView.setVisibility(View.GONE);
-            recyclerView_cart.setVisibility(View.VISIBLE);
+
+
 
             LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
             recyclerView_cart.setLayoutManager(linearLayoutManager);
@@ -76,7 +73,7 @@ public class Activity_Cart extends AppCompatActivity {
 
 
             soluong();
-        }
+
 
 
 
@@ -103,13 +100,14 @@ public class Activity_Cart extends AppCompatActivity {
                                 int macthd=list.get(position).getMacthd();
                                 boolean check=cthdDao.xoaCart(macthd);
                                 if(check){
-                                    Toast.makeText(Activity_Cart.this, "Xóa Thành công", Toast.LENGTH_SHORT).show();
-                                    hienthi();
+//                                    Toast.makeText(Activity_Cart.this, "Xóa Thành công", Toast.LENGTH_SHORT).show();
+
                                 }
                                 list.clear();
                                 list.addAll(cthdDao.listgetDSCart());
                                 cthdAdapter.notifyDataSetChanged();
                                 soluong();
+                                hienthi();
 
                             }
                         })
@@ -128,8 +126,10 @@ public class Activity_Cart extends AppCompatActivity {
 
     }
     private void hienthi(){
-        emptyCartTextView.setVisibility(View.VISIBLE);
-        recyclerView_cart.setVisibility(View.GONE);
+        if(list.isEmpty()){
+            emptyCartTextView.setVisibility(View.VISIBLE);
+            recyclerView_cart.setVisibility(View.GONE);
+        }
     }
     private void soluong(){
         int macthd=cthdAdapter.getItemCount();
