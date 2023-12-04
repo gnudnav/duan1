@@ -17,6 +17,7 @@ import com.example.duan.adapter.MyOrderAdapter;
 import com.example.duan.dao.BrandDao;
 import com.example.duan.dao.MyOrderDao;
 import com.example.duan.model.Brand;
+import com.example.duan.model.CTHD;
 import com.example.duan.model.SanPham;
 
 import java.util.ArrayList;
@@ -29,8 +30,8 @@ public class Tab_MyOrder_Fragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_tab_myorder,container,false);
         recyclerView_myOrder=view.findViewById(R.id.recyclerView_myOrder);
 
-        MyOrderDao brandDao=new MyOrderDao(getContext());
-        ArrayList< SanPham>list=brandDao.getlistDSMyOrder();
+        MyOrderDao myOrderDao=new MyOrderDao(getContext());
+        ArrayList<CTHD>list= myOrderDao.listgetDS();
 
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
         recyclerView_myOrder.setLayoutManager(linearLayoutManager);

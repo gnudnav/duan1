@@ -1,5 +1,6 @@
 package com.example.duan.dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -46,5 +47,18 @@ public class HoaDonDao {
         }
 
         return list;
+    }
+    public int themHD(){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("trangthai", 1);
+        values.put("manguoidung", 1);
+
+        long mahoadon = db.insert("HOADON", null, values);
+
+        db.close();
+
+        return (int)mahoadon;
     }
 }

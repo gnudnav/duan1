@@ -71,7 +71,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         String tCTHD="CREATE TABLE CTHD(macthd integer primary key autoincrement,masanpham integer references SANPHAM(masanpham),mahoadon integer references HOADON(mahoadon))";
         db.execSQL(tCTHD);
-        db.execSQL("INSERT INTO CTHD VALUES(1,1,1),(2,2,1)");
+        db.execSQL("INSERT INTO CTHD VALUES(1,1,1),(2,2,1),(3,3,4)");
 
     }
 

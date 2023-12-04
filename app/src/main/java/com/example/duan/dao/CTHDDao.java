@@ -44,11 +44,11 @@ public class CTHDDao {
             return true;
         }
     }
-    public boolean themCTHD(int masanpham) {
+    public boolean themCTHD(int masanpham,int mahoadon) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("masanpham", masanpham);
-        values.put("mahoadon",1);
+        values.put("mahoadon",mahoadon);
 
         long result = db.insert("CTHD", null, values);
         db.close();

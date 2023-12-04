@@ -14,15 +14,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan.R;
+import com.example.duan.model.CTHD;
 import com.example.duan.model.SanPham;
 
 import java.util.ArrayList;
 
 public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHolder>{
     private Context context;
-    private ArrayList<SanPham>list;
+    private ArrayList<CTHD>list;
 
-    public MyOrderAdapter(Context context, ArrayList<SanPham> list) {
+    public MyOrderAdapter(Context context, ArrayList<CTHD> list) {
         this.context = context;
         this.list = list;
     }
@@ -37,11 +38,11 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//        int imgSanPham=((Activity)context).getResources().getIdentifier(
-//                list.get(position).getImgsanpham(),"drawable",((Activity)context).getPackageName()
-//        );
-//
-//        holder.img.setImageResource(imgSanPham);
+        int imgSanPham=((Activity)context).getResources().getIdentifier(
+                list.get(position).getImgsanpham(),"drawable",((Activity)context).getPackageName()
+        );
+
+        holder.img.setImageResource(imgSanPham);
         holder.ten.setText(list.get(position).getTen());
 
         String loai="";

@@ -14,9 +14,11 @@ import android.widget.Toast;
 import com.example.duan.R;
 import com.example.duan.adapter.CTHDAdapter;
 import com.example.duan.dao.CTHDDao;
+import com.example.duan.dao.HoaDonDao;
 import com.example.duan.dao.SanPhamDao;
 import com.example.duan.database.DbHelper;
 import com.example.duan.model.CTHD;
+import com.example.duan.model.HoaDon;
 import com.example.duan.model.SanPham;
 
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class DetailActivity extends AppCompatActivity  {
     private boolean isHeartRed=false;
     private CTHDDao cthdDao;
     private SanPhamDao sanPhamDao;
+    private HoaDonDao hoaDonDao;
 
 
     @Override
@@ -42,9 +45,11 @@ public class DetailActivity extends AppCompatActivity  {
         }
         cthdDao=new CTHDDao(this);
         sanPhamDao=new SanPhamDao(this);
+        hoaDonDao=new HoaDonDao(this);
 
         SanPham sanPham= (SanPham) bundle.get("object");
-        CTHD cthd=(CTHD) bundle.get("obiect");
+        CTHD cthd=(CTHD) bundle.get("object_cthd");
+
         TextView txt_tensanpham=findViewById(R.id.txt_tensanpham);
         ImageView img_sanpham=findViewById(R.id.img_sanpham);
         TextView txt_giasanpham=findViewById(R.id.txt_giasanpham);
@@ -63,10 +68,12 @@ public class DetailActivity extends AppCompatActivity  {
             public void onClick(View view) {
 
                 int masanpham = sanPham.getMasanpham();
+                int mahoadon=hoaDonDao.themHD();
+
 
 
                 // Thêm vào bảng CTHD trong CTHDDao
-                if (cthdDao.themCTHD(masanpham)) { // Mã hóa đơn mặc định là 1
+                if (mahoadon!=-1&&cthdDao.themCTHD(masanpham,mahoadon)) { // Mã hóa đơn mặc định là 1
                     // Thông báo thành công
                     Toast.makeText(DetailActivity.this, "Thêm thành công vào giỏ hàng", Toast.LENGTH_SHORT).show();
                     sanPhamDao.updateSoLuong(masanpham,quantity);
