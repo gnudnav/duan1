@@ -35,7 +35,7 @@ public class Tab_MyOrder_Fragment extends Fragment {
 
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
         recyclerView_myOrder.setLayoutManager(linearLayoutManager);
-        MyOrderAdapter myOrderAdapter=new MyOrderAdapter(getContext(),list);
+        MyOrderAdapter myOrderAdapter=new MyOrderAdapter(getContext(),list,myOrderDao);
         recyclerView_myOrder.setAdapter(myOrderAdapter);
 
         return view;

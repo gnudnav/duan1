@@ -21,7 +21,9 @@ public class DbHelper extends SQLiteOpenHelper {
                 "(2,0145433539,'dung@gmal.com','5482 Adobe Falls Rd # 15San \\n\" +\n" +
                 "                \"Diego, Califorina (CA),92129','vanhai','abc123','levanhai')");
 
-
+//    trangthai:
+//    1:ko yêu thích
+//    2:yêu thích
         String tSanPham="CREATE TABLE SANPHAM(masanpham integer primary key autoincrement,gia integer,imgsanpham text,ten text," +
                 "tenbrand text references BRAND(tenbrand),maloai integer references LOAI(maloai),soluong integer,trangthai integer)";
         db.execSQL(tSanPham);
@@ -61,13 +63,17 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
 //        trang thai
-//        2:đã duyệt
 //        1:đang chờ
+//        2:đã duyệt
+//        3:đã hủy
         String tHoaDon="CREATE TABLE HOADON(mahoadon integer primary key autoincrement," +
                 "trangthai integer,manguoidung integer references NGUOIDUNG(manguoidung))";
         db.execSQL(tHoaDon);
         db.execSQL("INSERT INTO HOADON VALUES(1,1,1),(2,1,2),(3,1,1),(4,2,1)");
 
+//        trangthaicthd
+//        1:chưa xác nhận
+//        2:đã xác nhận
 
         String tCTHD="CREATE TABLE CTHD(macthd integer primary key autoincrement,masanpham integer references SANPHAM(masanpham),mahoadon integer references HOADON(mahoadon))";
         db.execSQL(tCTHD);

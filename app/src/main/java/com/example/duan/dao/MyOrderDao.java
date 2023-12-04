@@ -1,4 +1,5 @@
 package com.example.duan.dao;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -47,6 +48,16 @@ public class MyOrderDao {
         }
 
         return list;
+    }
+    public boolean updateTrangThai(int mahoadon,int trangthai) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("trangthai", 2);
+
+        int check=db.update("HOADON", values,"mahoadon=?",new String[]{String.valueOf(mahoadon)});
+        if(check==0) return false;
+        return true;
+
     }
 
 }
