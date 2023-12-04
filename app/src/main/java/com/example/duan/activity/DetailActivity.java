@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.duan.R;
 import com.example.duan.adapter.CTHDAdapter;
+import com.example.duan.adapter.SanPhamAdapter;
 import com.example.duan.dao.CTHDDao;
 import com.example.duan.dao.HoaDonDao;
 import com.example.duan.dao.SanPhamDao;
@@ -26,12 +27,15 @@ import java.util.ArrayList;
 public class DetailActivity extends AppCompatActivity  {
     private int quantity=1;
     private TextView txt_quantity;
-    private ImageView ic_cart,ic_heart;
+    private ImageView ic_cart;
+    private ImageView ic_heart;
     private Button btn_add;
     private boolean isHeartRed=false;
     private CTHDDao cthdDao;
     private SanPhamDao sanPhamDao;
     private HoaDonDao hoaDonDao;
+    private SanPhamAdapter sanPhamAdapter;
+    private ArrayList<SanPham> list;
 
 
     @Override
@@ -77,22 +81,12 @@ public class DetailActivity extends AppCompatActivity  {
                     // Thông báo thành công
                     Toast.makeText(DetailActivity.this, "Thêm thành công vào giỏ hàng", Toast.LENGTH_SHORT).show();
                     sanPhamDao.updateSoLuong(masanpham,quantity);
+
                 } else {
                     // Thông báo thất bại
                     Toast.makeText(DetailActivity.this, "Thêm vào giỏ hàng thất bại", Toast.LENGTH_SHORT).show();
                 }
 
-            }
-        });
-        ic_heart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(isHeartRed){
-                    ic_heart.setImageResource(R.drawable.ic_hearttttt);
-                }else {
-                    ic_heart.setImageResource(R.drawable.ic_img_heart_red);
-                }
-                isHeartRed=!isHeartRed;
             }
         });
 
@@ -124,6 +118,28 @@ public class DetailActivity extends AppCompatActivity  {
                 finish();
             }
         });
+        int trangthai=sanPham.getTrangthai();
+        if(trangthai==1){
+            ic_heart.setImageResource(R.drawable.ic_img_heart_black);
+        }else {
+            ic_heart.setImageResource(R.drawable.ic_img_heart_red);
+        }
+        ic_heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int matrangthai=sanPham.getMasanpham();
+                if(isHeartRed){
+                    ic_heart.setImageResource(R.drawable.ic_img_heart_red);
+                    sanPhamDao.updateTrangThai(matrangthai,2);
+                }else {
+                    ic_heart.setImageResource(R.drawable.ic_img_heart_black);
+                    sanPhamDao.updateTrangThai(matrangthai,1);
+                }
+                isHeartRed=!isHeartRed;
+
+            }
+        });
+
 
         txt_tensanpham.setText(sanPham.getTen());
         txt_giasanpham.setText(String.valueOf(sanPham.getGia()));

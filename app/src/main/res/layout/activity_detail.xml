@@ -53,12 +53,11 @@
            android:id="@+id/heart"
            android:layout_width="35dp"
            android:layout_height="35dp"
-           android:src="@drawable/ic_hearttttt"
+           android:src="@drawable/ic_img_heart_black"
            android:layout_below="@+id/img_sanpham"
            android:layout_marginTop="30dp"
            android:layout_alignParentEnd="true" />
-       <!--           android:clickable="true"-->
-       <!--           android:onClick="onHeartClick"-->
+
        <ImageView
            android:id="@+id/img_star"
            android:layout_marginTop="5dp"

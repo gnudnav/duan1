@@ -59,4 +59,14 @@ public class SanPhamDao {
 
         return list;
     }
+    public int updateTrangThai(int masanpham,int trangthai) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("trangthai", trangthai);
+
+        db.update("SANPHAM", values,"masanpham=?",new String[]{String.valueOf(masanpham)});
+
+        return trangthai;
+
+    }
 }
