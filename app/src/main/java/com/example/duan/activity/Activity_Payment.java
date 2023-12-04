@@ -73,6 +73,7 @@ public class Activity_Payment extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(Activity_Payment.this, "Đã mua thành công", Toast.LENGTH_SHORT).show();
+
             }
         });
     }

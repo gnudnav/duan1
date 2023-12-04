@@ -77,7 +77,7 @@ public class DetailActivity extends AppCompatActivity  {
 
 
                 // Thêm vào bảng CTHD trong CTHDDao
-                if (mahoadon!=-1&&cthdDao.themCTHD(masanpham,mahoadon)) { // Mã hóa đơn mặc định là 1
+                if (mahoadon!=-1&&cthdDao.themCTHD(masanpham,mahoadon,1)) {
                     // Thông báo thành công
                     Toast.makeText(DetailActivity.this, "Thêm thành công vào giỏ hàng", Toast.LENGTH_SHORT).show();
                     sanPhamDao.updateSoLuong(masanpham,quantity);

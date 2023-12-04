@@ -21,14 +21,14 @@ public class CTHDDao {
     public ArrayList<CTHD> listgetDSCart(){
         ArrayList<CTHD> list=new ArrayList<>();
         SQLiteDatabase sqLiteDatabase=dbHelper.getReadableDatabase();
-        Cursor cursor=sqLiteDatabase.rawQuery("SELECT cthd.macthd, cthd.masanpham, hoadon.mahoadon,hoadon.trangthai,sanpham.gia, sanpham.imgsanpham, sanpham.ten, sanpham.tenbrand, sanpham.maloai, sanpham.soluong\n" +
+        Cursor cursor=sqLiteDatabase.rawQuery("SELECT cthd.macthd, cthd.masanpham, hoadon.mahoadon,hoadon.trangthai,sanpham.gia, sanpham.imgsanpham, sanpham.ten, sanpham.tenbrand, sanpham.maloai, sanpham.soluong,cthd.trangthaicthd\n" +
                 "FROM CTHD cthd\n" +
                 "JOIN SANPHAM sanpham ON cthd.masanpham = sanpham.masanpham\n" +
-                "JOIN HOADON hoadon ON cthd.mahoadon = hoadon.mahoadon",null);
+                "JOIN HOADON hoadon ON cthd.mahoadon = hoadon.mahoadon WHERE cthd.trangthaicthd=1",null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do {
-                list.add(new CTHD(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2),cursor.getInt(3),cursor.getInt(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getInt(8),cursor.getInt(9)));
+                list.add(new CTHD(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2),cursor.getInt(3),cursor.getInt(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getInt(8),cursor.getInt(9),cursor.getInt(10)));
             }while (cursor.moveToNext());
         }
 
@@ -44,11 +44,12 @@ public class CTHDDao {
             return true;
         }
     }
-    public boolean themCTHD(int masanpham,int mahoadon) {
+    public boolean themCTHD(int masanpham,int mahoadon,int trangthaicthd) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("masanpham", masanpham);
         values.put("mahoadon",mahoadon);
+        values.put("trangthaicthd",trangthaicthd);
 
         long result = db.insert("CTHD", null, values);
         db.close();
