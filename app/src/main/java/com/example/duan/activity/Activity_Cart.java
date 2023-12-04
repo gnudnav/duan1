@@ -63,13 +63,10 @@ public class Activity_Cart extends AppCompatActivity {
             }
         });
         list=cthdDao.listgetDSCart();
-
-
-
-            LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
-            recyclerView_cart.setLayoutManager(linearLayoutManager);
-            cthdAdapter=new CTHDAdapter(Activity_Cart.this,list);
-            recyclerView_cart.setAdapter(cthdAdapter);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
+        recyclerView_cart.setLayoutManager(linearLayoutManager);
+        cthdAdapter=new CTHDAdapter(Activity_Cart.this,list);
+        recyclerView_cart.setAdapter(cthdAdapter);
 
 
             soluong();
