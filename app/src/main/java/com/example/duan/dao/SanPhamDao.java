@@ -29,7 +29,7 @@ public class SanPhamDao {
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do {
-                list.add(new SanPham(cursor.getInt(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5),cursor.getInt(6)));
+                list.add(new SanPham(cursor.getInt(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5),cursor.getInt(6),cursor.getInt(7)));
             }while (cursor.moveToNext());
         }
 
@@ -45,5 +45,18 @@ public class SanPhamDao {
 
         db.close();
 
+    }
+    public ArrayList<SanPham> listgetDS(){
+        ArrayList<SanPham> list=new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase=dbHelper.getReadableDatabase();
+        Cursor cursor=sqLiteDatabase.rawQuery("SELECT * FROM SANPHAM WHERE trangthai=2 ",null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            do {
+                list.add(new SanPham(cursor.getInt(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5),cursor.getInt(6),cursor.getInt(7)));
+            }while (cursor.moveToNext());
+        }
+
+        return list;
     }
 }

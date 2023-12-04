@@ -73,7 +73,7 @@ public class Heart_Fragment extends Fragment {
             }
         });
         SanPhamDao sanPhamDao=new SanPhamDao(getContext());
-        list=sanPhamDao.listgetDSSANPHAM();
+        list=sanPhamDao.listgetDS();
 
         GridLayoutManager gridLayoutManager=new GridLayoutManager(getContext(),2);
         recyclerView.setLayoutManager(gridLayoutManager);
