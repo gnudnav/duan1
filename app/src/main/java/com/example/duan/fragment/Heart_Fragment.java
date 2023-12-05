@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +26,10 @@ import com.example.duan.R;
 import com.example.duan.activity.Activity_Cart;
 import com.example.duan.activity.SearchViewActivity;
 import com.example.duan.adapter.SanPhamAdapter;
+import com.example.duan.dao.CTHDDao;
 import com.example.duan.dao.SanPhamDao;
+import com.example.duan.model.CTHD;
+import com.example.duan.model.HoaDon;
 import com.example.duan.model.SanPham;
 
 import java.util.ArrayList;
@@ -34,7 +38,6 @@ public class Heart_Fragment extends Fragment {
 
     private ArrayList<SanPham> list;
     private SanPhamAdapter sanPhamAdapter;
-    private Context context;
 
     @Nullable
     @Override
@@ -44,7 +47,6 @@ public class Heart_Fragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView_heart);
         ImageView ic_setting = view.findViewById(R.id.ic_setting);
         ImageView ic_cart = view.findViewById(R.id.ic_cart);
-
         ic_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

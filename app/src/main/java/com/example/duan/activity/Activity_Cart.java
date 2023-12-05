@@ -43,24 +43,10 @@ public class Activity_Cart extends AppCompatActivity {
         checkout=findViewById(R.id.checkout);
         emptyCartTextView=findViewById(R.id.emptyCartTextView);
         cthdDao=new CTHDDao(this);
-        HoaDonDao hoaDonDao=new HoaDonDao(this);
-
         checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(cthdDao.listgetDSCart().isEmpty()){
-//                    Toast.makeText(Activity_Cart.this, "There must be at least 1 product in the cart", Toast.LENGTH_SHORT).show();
-//                }else{
-//                    int mahoadon = hoaDonDao.themHD();
-//                    if(cthdDao.updateTrangThaiHD(mahoadon)){
-//                        Intent intent = new Intent(Activity_Cart.this, Activity_Payment.class);
-//                        // Gửi mã hoá đơn đến Activity thanh toán nếu cần thiết
-//                        intent.putExtra("mahoadon", mahoadon);
-//                        startActivity(intent);
-//                    }else {
-//                        Toast.makeText(Activity_Cart.this, "Failed to update order status", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
+
                 checkout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

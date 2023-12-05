@@ -23,9 +23,6 @@ public class HoaDon {
         this.hoten = hoten;
     }
 
-    public int getMahd() {
-        return mahd;
-    }
 
     public void setMahd(int mahd) {
         this.mahd = mahd;

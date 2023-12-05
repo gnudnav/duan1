@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -63,12 +64,33 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
         holder.btn_xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int macthd=list.get(holder.getAdapterPosition()).getMacthd();
+                boolean check=myOrderDao.updateTrangThaiHD(macthd,2);
+                if(check){
+                    Toast.makeText(context, "Xác nhận thành công", Toast.LENGTH_SHORT).show();
+                    list.remove(holder.getAdapterPosition());
+
+                    // Thông báo cho Adapter biết là dữ liệu đã thay đổi
+                    notifyDataSetChanged();
+                }else {
+                    Toast.makeText(context, "Xác nhận thất bại", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         holder.btn_huy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                int macthd=list.get(holder.getAdapterPosition()).getMacthd();
+                boolean check=myOrderDao.updateTrangThaiHD(macthd,3);
+                if(check){
+                    Toast.makeText(context, "Hủy thành công", Toast.LENGTH_SHORT).show();
+                    list.clear();
+                    list.addAll(myOrderDao.listgetDS());
+                    notifyDataSetChanged();
+                }else {
+                    Toast.makeText(context, "Hủy thất bại", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -89,7 +111,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
             loai=itemView.findViewById(R.id.loai);
             txt_quantity=itemView.findViewById(R.id.txt_quantity);
             gia=itemView.findViewById(R.id.gia);
-            btn_xacnhan=itemView.findViewById(R.id.btn_chitiet);
+            btn_xacnhan=itemView.findViewById(R.id.btn_xacnhan);
             btn_huy=itemView.findViewById(R.id.btn_huy);
         }
     }

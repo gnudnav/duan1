@@ -34,8 +34,7 @@ public class DetailActivity extends AppCompatActivity  {
     private CTHDDao cthdDao;
     private SanPhamDao sanPhamDao;
     private HoaDonDao hoaDonDao;
-    private SanPhamAdapter sanPhamAdapter;
-    private ArrayList<SanPham> list;
+
 
 
     @Override
@@ -52,7 +51,6 @@ public class DetailActivity extends AppCompatActivity  {
         hoaDonDao=new HoaDonDao(this);
 
         SanPham sanPham= (SanPham) bundle.get("object");
-        CTHD cthd=(CTHD) bundle.get("object_cthd");
 
         TextView txt_tensanpham=findViewById(R.id.txt_tensanpham);
         ImageView img_sanpham=findViewById(R.id.img_sanpham);

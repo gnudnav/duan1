@@ -49,15 +49,12 @@ public class MyOrderDao {
 
         return list;
     }
-    public boolean updateTrangThai(int mahoadon,int trangthai) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+    public boolean updateTrangThaiHD(int macthd,int trangthaicthd){
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("trangthai", 2);
-
-        int check=db.update("HOADON", values,"mahoadon=?",new String[]{String.valueOf(mahoadon)});
-        if(check==0) return false;
-        return true;
-
+        values.put("trangthaicthd",trangthaicthd);
+        long check = database.update("CTHD",values,"macthd=?",new String[]{String.valueOf(macthd)});
+        return check != -1;
     }
-
 }
