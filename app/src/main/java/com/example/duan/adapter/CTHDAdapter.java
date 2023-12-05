@@ -13,9 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan.R;
-import com.example.duan.dao.CTHDDao;
 import com.example.duan.model.CTHD;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class CTHDAdapter extends RecyclerView.Adapter<CTHDAdapter.ViewHolder>{
@@ -55,9 +55,11 @@ public class CTHDAdapter extends RecyclerView.Adapter<CTHDAdapter.ViewHolder>{
             loai="Couple";
         }
         holder.loai.setText(loai);
-        holder.txt_quantity.setText(String.valueOf(list.get(position).getSoluong()));
-        holder.gia.setText(String.valueOf(list.get(position).getGia()));
+        NumberFormat numberFormat=NumberFormat.getInstance();
+        holder.gia.setText(numberFormat.format(list.get(position).getGia())+"đ");
 
+
+        holder.txt_quantity.setText(String.valueOf(list.get(position).getSoluong()));
         holder.dautru.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,6 +74,7 @@ public class CTHDAdapter extends RecyclerView.Adapter<CTHDAdapter.ViewHolder>{
             public void onClick(View view) {
                 quantity++;
                 holder.txt_quantity.setText(String.valueOf(quantity));
+
             }
         });
         holder.txtmahoadon.setText(String.valueOf(list.get(position).getMahd()));
@@ -104,4 +107,5 @@ public class CTHDAdapter extends RecyclerView.Adapter<CTHDAdapter.ViewHolder>{
             txttrangthaihd=itemView.findViewById(R.id.txttrangthai);
         }
     }
+
 }

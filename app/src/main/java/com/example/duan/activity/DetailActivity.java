@@ -22,6 +22,7 @@ import com.example.duan.model.CTHD;
 import com.example.duan.model.HoaDon;
 import com.example.duan.model.SanPham;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity  {
@@ -68,17 +69,14 @@ public class DetailActivity extends AppCompatActivity  {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                int giasanpham=sanPham.getGia();
                 int masanpham = sanPham.getMasanpham();
                 int mahoadon=hoaDonDao.themHD();
-
-
-
                 // Thêm vào bảng CTHD trong CTHDDao
                 if (mahoadon!=-1&&cthdDao.themCTHD(masanpham,mahoadon,1)) {
                     // Thông báo thành công
                     Toast.makeText(DetailActivity.this, "Thêm thành công vào giỏ hàng", Toast.LENGTH_SHORT).show();
-                    sanPhamDao.updateSoLuong(masanpham,quantity);
+                    sanPhamDao.updateSoLuongGia(masanpham,quantity,giasanpham*quantity);
 
                 } else {
                     // Thông báo thất bại
@@ -87,9 +85,6 @@ public class DetailActivity extends AppCompatActivity  {
 
             }
         });
-
-
-
         ImageView ic_back=findViewById(R.id.ic_back);
         ImageView dautru=findViewById(R.id.dautru);
         ImageView daucong=findViewById(R.id.daucong);
@@ -139,18 +134,27 @@ public class DetailActivity extends AppCompatActivity  {
         });
 
 
-        txt_tensanpham.setText(sanPham.getTen());
-        txt_giasanpham.setText(String.valueOf(sanPham.getGia()));
-        txt_quantity.setText(String.valueOf(sanPham.getSoluong()));
-        //ham hien thị hình ảnh lên detail
-        Bundle bundle1=getIntent().getExtras();
-        if(bundle1!=null){
-            SanPham sanPham1=(SanPham) bundle.getSerializable("object");
-            if(sanPham1!=null){
-                int imgSanPham=getResources().getIdentifier(sanPham1.getImgsanpham(),"drawable",getPackageName());
-                img_sanpham.setImageResource(imgSanPham);
+            txt_tensanpham.setText(sanPham.getTen());
+
+//
+//
+//            txt_giasanpham.setText(numberFormat.format(String.valueOf(sanPham.getGia())));
+
+        Object giaObject = sanPham.getGia();
+        int gia=(Integer)giaObject;
+        NumberFormat numberFormat=NumberFormat.getInstance();
+        txt_giasanpham.setText(numberFormat.format(gia));
+
+            txt_quantity.setText(String.valueOf(sanPham.getSoluong()));
+            //ham hien thị hình ảnh lên detail
+            Bundle bundle1=getIntent().getExtras();
+            if(bundle1!=null){
+                SanPham sanPham1=(SanPham) bundle.getSerializable("object");
+                if(sanPham1!=null){
+                    int imgSanPham=getResources().getIdentifier(sanPham1.getImgsanpham(),"drawable",getPackageName());
+                    img_sanpham.setImageResource(imgSanPham);
+                }
             }
-        }
         //ham hien thị hình ảnh lên detail
     }
     private void tang(){
