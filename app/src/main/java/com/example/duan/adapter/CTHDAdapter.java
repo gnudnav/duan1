@@ -74,6 +74,7 @@ public class CTHDAdapter extends RecyclerView.Adapter<CTHDAdapter.ViewHolder>{
                 holder.txt_quantity.setText(String.valueOf(quantity));
             }
         });
+        holder.txtmahoadon.setText(String.valueOf(list.get(position).getMahd()));
 
     }
 
@@ -88,8 +89,10 @@ public class CTHDAdapter extends RecyclerView.Adapter<CTHDAdapter.ViewHolder>{
         private TextView ten,loai,txt_quantity,gia;
         private ImageView dautru;
         private ImageView daucong;
+        private TextView txtmahoadon;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            txtmahoadon=itemView.findViewById(R.id.txtmahoadon);
             checkBox=itemView.findViewById(R.id.chk_checkbox);
             img=itemView.findViewById(R.id.img);
             ten=itemView.findViewById(R.id.ten);

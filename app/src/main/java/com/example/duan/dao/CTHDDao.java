@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.example.duan.database.DbHelper;
@@ -55,5 +56,23 @@ public class CTHDDao {
         db.close();
 
         return result != -1;
+    }
+//    public boolean updateTrangThaiCTHD(ArrayList<CTHD>list,int trangthaicthd) {
+//        SQLiteDatabase db = dbHelper.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put("trangthaicthd",trangthaicthd);
+//        String whereClause = "macthd IN (" + TextUtils.join(",", list) + ")";
+//        String[] whereArgs = null;
+//
+//        int result = db.update("CTHD",values,whereClause,whereArgs);
+//
+//        return result>0;
+//    }
+    public boolean updateTrangThaiCTHD(int mahoadon){
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("trangthai",2);
+        long check = database.update("HoaDon",values,"mahoadon=?",new String[]{String.valueOf(mahoadon)});
+        return check != -1;
     }
 }

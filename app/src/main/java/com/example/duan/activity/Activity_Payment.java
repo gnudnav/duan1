@@ -15,9 +15,11 @@ import android.widget.Toast;
 import com.example.duan.R;
 import com.example.duan.adapter.CTHDAdapter;
 import com.example.duan.dao.CTHDDao;
+import com.example.duan.dao.HoaDonDao;
 import com.example.duan.dao.NguoiDungDao;
 import com.example.duan.fragment.Delivery_Fragment;
 import com.example.duan.model.CTHD;
+import com.example.duan.model.HoaDon;
 import com.example.duan.model.NguoiDung;
 
 import java.util.ArrayList;
@@ -72,8 +74,14 @@ public class Activity_Payment extends AppCompatActivity {
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Activity_Payment.this, "Đã mua thành công", Toast.LENGTH_SHORT).show();
+                boolean check=cthdDao.updateTrangThaiCTHD(1);
+                if(check){
+                    Toast.makeText(Activity_Payment.this, "xac nhan thanh cong", Toast.LENGTH_SHORT).show();
+                    list.clear();
+                    list=cthdDao.listgetDSCart();
+                    cthdAdapter.notifyDataSetChanged();
 
+                }
             }
         });
     }

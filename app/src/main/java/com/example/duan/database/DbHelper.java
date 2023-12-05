@@ -17,9 +17,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "email text,diachi text,tentaikhoan text,matkhau text,hoten text)";
         db.execSQL(tNguoiDung);
         db.execSQL("INSERT INTO NGUOIDUNG VALUES(1,0123456789,'dung@gmal.com','5482 Adobe Falls Rd # 15San \n" +
-                "Diego, Califorina (CA),92129','vandung','abc123','levandung')," +
-                "(2,0145433539,'dung@gmal.com','5482 Adobe Falls Rd # 15San \\n\" +\n" +
-                "                \"Diego, Califorina (CA),92129','vanhai','abc123','levanhai')");
+                "Diego, Califorina (CA),92129','vandung','abc123','levandung')");
 
 //    trangthai:
 //    1:ko yêu thích

@@ -48,6 +48,13 @@
         android:layout_below="@id/ten"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"/>
+    <TextView
+        android:id="@+id/txtmahoadon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/loai"
+        android:layout_below="@id/ten"
+        android:text="1"/>
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_marginTop="8dp"
