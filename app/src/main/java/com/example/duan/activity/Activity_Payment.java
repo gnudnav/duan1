@@ -71,16 +71,19 @@ public class Activity_Payment extends AppCompatActivity {
                 finish();
             }
         });
+        HoaDonDao hoaDonDao=new HoaDonDao(this);
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean check=cthdDao.updateTrangThaiCTHD(1);
-                if(check){
-                    Toast.makeText(Activity_Payment.this, "xac nhan thanh cong", Toast.LENGTH_SHORT).show();
-                    list.clear();
-                    list=cthdDao.listgetDSCart();
-                    cthdAdapter.notifyDataSetChanged();
-
+                int mahoadon = hoaDonDao.themHD();
+                if(cthdDao.updateTrangThaiHD(mahoadon)){
+                    // Nếu cập nhật thành công, chuyển đến màn hình thanh toán
+                    Intent intent = new Intent(Activity_Payment.this, Activity_ThongBao.class);
+                    // Gửi mã hoá đơn đến Activity thanh toán nếu cần thiết
+                    intent.putExtra("mahoadon", mahoadon);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(Activity_Payment.this, "Failed to update order status", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.duan.R;
 import com.example.duan.adapter.CTHDAdapter;
 import com.example.duan.dao.CTHDDao;
+import com.example.duan.dao.HoaDonDao;
 import com.example.duan.model.CTHD;
 
 import java.util.ArrayList;
@@ -42,16 +43,36 @@ public class Activity_Cart extends AppCompatActivity {
         checkout=findViewById(R.id.checkout);
         emptyCartTextView=findViewById(R.id.emptyCartTextView);
         cthdDao=new CTHDDao(this);
+        HoaDonDao hoaDonDao=new HoaDonDao(this);
 
         checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(cthdDao.listgetDSCart().isEmpty()){
-                    Toast.makeText(Activity_Cart.this, "There must be at least 1 product in the cart", Toast.LENGTH_SHORT).show();
-                }else{
-                    startActivity(new Intent(Activity_Cart.this, Activity_Payment.class));
-                }
-
+//                if(cthdDao.listgetDSCart().isEmpty()){
+//                    Toast.makeText(Activity_Cart.this, "There must be at least 1 product in the cart", Toast.LENGTH_SHORT).show();
+//                }else{
+//                    int mahoadon = hoaDonDao.themHD();
+//                    if(cthdDao.updateTrangThaiHD(mahoadon)){
+//                        Intent intent = new Intent(Activity_Cart.this, Activity_Payment.class);
+//                        // Gửi mã hoá đơn đến Activity thanh toán nếu cần thiết
+//                        intent.putExtra("mahoadon", mahoadon);
+//                        startActivity(intent);
+//                    }else {
+//                        Toast.makeText(Activity_Cart.this, "Failed to update order status", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+                checkout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(cthdDao.listgetDSCart().isEmpty()){
+                            Toast.makeText(Activity_Cart.this, "There must be at least 1 product in the cart", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Nếu có sản phẩm, chuyển đến màn hình xác nhận
+                            Intent confirmIntent = new Intent(Activity_Cart.this, Activity_Payment.class);
+                            startActivity(confirmIntent);
+                        }
+                    }
+                });
             }
         });
 
@@ -68,8 +89,8 @@ public class Activity_Cart extends AppCompatActivity {
         cthdAdapter=new CTHDAdapter(Activity_Cart.this,list);
         recyclerView_cart.setAdapter(cthdAdapter);
 
-
-            soluong();
+        hienthi();
+        soluong();
 
 
 
@@ -97,7 +118,7 @@ public class Activity_Cart extends AppCompatActivity {
                                 int macthd=list.get(position).getMacthd();
                                 boolean check=cthdDao.xoaCart(macthd);
                                 if(check){
-//                                    Toast.makeText(Activity_Cart.this, "Xóa Thành công", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Activity_Cart.this, "Xóa Thành công", Toast.LENGTH_SHORT).show();
 
                                 }
                                 list.clear();
@@ -123,7 +144,8 @@ public class Activity_Cart extends AppCompatActivity {
 
     }
     private void hienthi(){
-        if(list.isEmpty()){
+        int macthd=cthdAdapter.getItemCount();
+        if(macthd==0){
             emptyCartTextView.setVisibility(View.VISIBLE);
             recyclerView_cart.setVisibility(View.GONE);
         }
@@ -131,6 +153,5 @@ public class Activity_Cart extends AppCompatActivity {
     private void soluong(){
         int macthd=cthdAdapter.getItemCount();
         soluongcheckbox.setText(String.valueOf(macthd));
-
     }
 }

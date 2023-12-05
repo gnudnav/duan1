@@ -2,7 +2,7 @@ package com.example.duan.model;
 
 public class HoaDon {
     private int mahd;
-    private int trangthai;
+    private int trangthaihd;
     private int manguoidung;
     private int sdt;
     private String email;
@@ -11,9 +11,9 @@ public class HoaDon {
     private String matkhau;
     private String hoten;
 
-    public HoaDon(int mahd, int trangthai, int manguoidung, int sdt, String email, String diachi, String tentaikhoan, String matkhau, String hoten) {
+    public HoaDon(int mahd, int trangthaihd, int manguoidung, int sdt, String email, String diachi, String tentaikhoan, String matkhau, String hoten) {
         this.mahd = mahd;
-        this.trangthai = trangthai;
+        this.trangthaihd = trangthaihd;
         this.manguoidung = manguoidung;
         this.sdt = sdt;
         this.email = email;
@@ -31,12 +31,12 @@ public class HoaDon {
         this.mahd = mahd;
     }
 
-    public int getTrangthai() {
-        return trangthai;
+    public int getTrangthaihd() {
+        return trangthaihd;
     }
 
-    public void setTrangthai(int trangthai) {
-        this.trangthai = trangthai;
+    public void setTrangthaihd(int trangthaihd) {
+        this.trangthaihd = trangthaihd;
     }
 
     public int getManguoidung() {

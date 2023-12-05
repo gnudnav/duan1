@@ -18,47 +18,28 @@ public class HoaDonDao {
         dbHelper=new DbHelper(context);
     }
 
-    public ArrayList<HoaDon> listgetHoaDon1(){
-        ArrayList<HoaDon> list=new ArrayList<>();
-        SQLiteDatabase sqLiteDatabase=dbHelper.getReadableDatabase();
-        Cursor cursor=sqLiteDatabase.rawQuery("SELECT hd.mahoadon, hd.trangthai, nd.manguoidung, nd.sdt, nd.email, nd.diachi, nd.tentaikhoan, nd.matkhau, nd.hoten " +
-                "FROM HOADON hd " +
-                "JOIN NGUOIDUNG nd ON hd.manguoidung = nd.manguoidung WHERE hd.trangthai=1 ",null);
-        if(cursor.getCount()>0){
-            cursor.moveToFirst();
-            do {
-                list.add(new HoaDon(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2),cursor.getInt(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8)));
-            }while (cursor.moveToNext());
-        }
-
-        return list;
-    }
-    public ArrayList<HoaDon> listgetHoaDon2(){
-        ArrayList<HoaDon> list=new ArrayList<>();
-        SQLiteDatabase sqLiteDatabase=dbHelper.getReadableDatabase();
-        Cursor cursor=sqLiteDatabase.rawQuery("SELECT hd.mahoadon, hd.trangthai, nd.manguoidung, nd.sdt, nd.email, nd.diachi, nd.tentaikhoan, nd.matkhau, nd.hoten " +
-                "FROM HOADON hd " +
-                "JOIN NGUOIDUNG nd ON hd.manguoidung = nd.manguoidung WHERE hd.trangthai=2 ",null);
-        if(cursor.getCount()>0){
-            cursor.moveToFirst();
-            do {
-                list.add(new HoaDon(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2),cursor.getInt(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8)));
-            }while (cursor.moveToNext());
-        }
-
-        return list;
-    }
-    public int themHD(){
+    public int themHD() {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        ContentValues values = new ContentValues();
-        values.put("trangthai", 1);
-        values.put("manguoidung", 1);
+        // Kiểm tra xem có hoa don hiện tại với trạng thái 1 hay 2 không
+        Cursor cursor = db.rawQuery("SELECT mahoadon FROM HOADON WHERE manguoidung = 1 AND trangthaihd = 1", null);
 
-        long mahoadon = db.insert("HOADON", null, values);
+        int existingMahoadon;
+        if (cursor.moveToFirst()) {
+            // Nếu có hoá đơn với trạng thái 1, lấy mã hoá đơn hiện tại
+            existingMahoadon = cursor.getInt(cursor.getColumnIndex("mahoadon"));
+        } else {
+            // Nếu không có hoá đơn với trạng thái 1, tạo một hoá đơn mới với trạng thái 1
+            ContentValues values = new ContentValues();
+            values.put("trangthaihd", 1);
+            values.put("manguoidung", 1);
+            long mahoadon = db.insert("HOADON", null, values);
+            existingMahoadon = (int) mahoadon;
+        }
 
+        cursor.close();
         db.close();
 
-        return (int)mahoadon;
+        return existingMahoadon;
     }
 }

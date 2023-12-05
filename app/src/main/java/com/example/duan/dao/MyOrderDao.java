@@ -18,11 +18,11 @@ public class MyOrderDao {
     public ArrayList<CTHD> listgetDS(){
         ArrayList<CTHD> list=new ArrayList<>();
         SQLiteDatabase sqLiteDatabase=dbHelper.getReadableDatabase();
-        Cursor cursor=sqLiteDatabase.rawQuery("SELECT cthd.macthd, cthd.masanpham, hoadon.mahoadon, hoadon.trangthai, sanpham.gia, sanpham.imgsanpham, sanpham.ten, sanpham.tenbrand, sanpham.maloai, sanpham.soluong,cthd.trangthaicthd\n" +
+        Cursor cursor=sqLiteDatabase.rawQuery("SELECT cthd.macthd, cthd.masanpham, hoadon.mahoadon, hoadon.trangthaihd, sanpham.gia, sanpham.imgsanpham, sanpham.ten, sanpham.tenbrand, sanpham.maloai, sanpham.soluong,cthd.trangthaicthd\n" +
                 "FROM CTHD cthd\n" +
                 "JOIN SANPHAM sanpham ON cthd.masanpham = sanpham.masanpham\n" +
                 "JOIN HOADON hoadon ON cthd.mahoadon = hoadon.mahoadon\n" +
-                "WHERE hoadon.trangthai = 1 AND cthd.trangthaicthd=2;",null);
+                "WHERE hoadon.trangthaihd = 2 AND cthd.trangthaicthd=1;",null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do {
@@ -35,11 +35,11 @@ public class MyOrderDao {
     public ArrayList<CTHD> listgetDSHistory(){
         ArrayList<CTHD> list=new ArrayList<>();
         SQLiteDatabase sqLiteDatabase=dbHelper.getReadableDatabase();
-        Cursor cursor=sqLiteDatabase.rawQuery("SELECT cthd.macthd, cthd.masanpham, hoadon.mahoadon, hoadon.trangthai, sanpham.gia, sanpham.imgsanpham, sanpham.ten, sanpham.tenbrand, sanpham.maloai, sanpham.soluong,cthd.trangthaicthd\n" +
+        Cursor cursor=sqLiteDatabase.rawQuery("SELECT cthd.macthd, cthd.masanpham, hoadon.mahoadon, hoadon.trangthaihd, sanpham.gia, sanpham.imgsanpham, sanpham.ten, sanpham.tenbrand, sanpham.maloai, sanpham.soluong,cthd.trangthaicthd\n" +
                 "FROM CTHD cthd\n" +
                 "JOIN SANPHAM sanpham ON cthd.masanpham = sanpham.masanpham\n" +
                 "JOIN HOADON hoadon ON cthd.mahoadon = hoadon.mahoadon\n" +
-                "WHERE hoadon.trangthai = 2 AND cthd.trangthaicthd=2",null);
+                "WHERE hoadon.trangthaihd = 2 AND cthd.trangthaicthd=2",null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do {

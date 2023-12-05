@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.Activity_ThongBao"
+    android:layout_marginHorizontal="15dp"
+    >
+    <!--    android:background="#5458C0"-->
+    <ImageView
+        android:id="@+id/img_icon_cart"
+        android:layout_marginTop="20dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_cart"
+        android:layout_alignParentEnd="true"/>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đang chờ thanh toán"
+        android:textSize="28dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:layout_below="@id/img_icon_cart"/>
+    <TextView
+        android:id="@+id/cmt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cùng kutuku bảo vệ quyền lợi của bạn-Thường xuyên kiểm tra tin nhắn từ Người duyệt/Chỉ nhận và thanh toán khi đơn mua ở trạng thái'đang giao hàng'"
+        android:layout_below="@id/title"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="14dp"
+        android:textAlignment="center"/>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cmt"
+        android:layout_centerHorizontal="true">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/trangchu"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Trang chủ"
+            android:layout_marginRight="10dp"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginLeft="10dp"
+            android:id="@+id/donmua"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Đơn mua"
+            android:layout_toRightOf="@id/trangchu"/>
+    </LinearLayout>
+
+</RelativeLayout>

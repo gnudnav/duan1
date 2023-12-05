@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -44,7 +45,12 @@ public class MainActivity extends AppCompatActivity {
                 return loadFragment(fragment);
             }
         });
+        Intent intent=getIntent();
+        if(intent.getBooleanExtra("openDeliveryFragment",false)){
+            loadFragment(new Delivery_Fragment());
+        }
     }
+
     private boolean loadFragment(Fragment fragment){
         if(fragment!=null){
             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment)

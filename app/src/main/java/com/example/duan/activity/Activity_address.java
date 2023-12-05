@@ -31,28 +31,6 @@ public class Activity_address extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
 
-        ic_back=findViewById(R.id.ic_back);
-        recyclerView_address=findViewById(R.id.recyclerView_address);
 
-        ic_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-        img_add_address=findViewById(R.id.img_add_address);
-        img_add_address.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Activity_address.this, Activity_New_Address.class));
-            }
-        });
-        hoaDonDao=new HoaDonDao(this);
-        ArrayList<HoaDon> list=hoaDonDao.listgetHoaDon1();
-
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
-        recyclerView_address.setLayoutManager(linearLayoutManager);
-        hoaDonAdapter=new HoaDonAdapter(this,list);
-        recyclerView_address.setAdapter(hoaDonAdapter);
     }
 }

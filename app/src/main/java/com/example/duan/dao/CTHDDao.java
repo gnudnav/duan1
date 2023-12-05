@@ -22,10 +22,10 @@ public class CTHDDao {
     public ArrayList<CTHD> listgetDSCart(){
         ArrayList<CTHD> list=new ArrayList<>();
         SQLiteDatabase sqLiteDatabase=dbHelper.getReadableDatabase();
-        Cursor cursor=sqLiteDatabase.rawQuery("SELECT cthd.macthd, cthd.masanpham, hoadon.mahoadon,hoadon.trangthai,sanpham.gia, sanpham.imgsanpham, sanpham.ten, sanpham.tenbrand, sanpham.maloai, sanpham.soluong,cthd.trangthaicthd\n" +
+        Cursor cursor=sqLiteDatabase.rawQuery("SELECT cthd.macthd, cthd.masanpham, hoadon.mahoadon,hoadon.trangthaihd,sanpham.gia, sanpham.imgsanpham, sanpham.ten, sanpham.tenbrand, sanpham.maloai, sanpham.soluong,cthd.trangthaicthd\n" +
                 "FROM CTHD cthd\n" +
                 "JOIN SANPHAM sanpham ON cthd.masanpham = sanpham.masanpham\n" +
-                "JOIN HOADON hoadon ON cthd.mahoadon = hoadon.mahoadon WHERE cthd.trangthaicthd=1",null);
+                "JOIN HOADON hoadon ON cthd.mahoadon = hoadon.mahoadon WHERE hoadon.trangthaihd=1\n",null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do {
@@ -57,21 +57,18 @@ public class CTHDDao {
 
         return result != -1;
     }
-//    public boolean updateTrangThaiCTHD(ArrayList<CTHD>list,int trangthaicthd) {
-//        SQLiteDatabase db = dbHelper.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put("trangthaicthd",trangthaicthd);
-//        String whereClause = "macthd IN (" + TextUtils.join(",", list) + ")";
-//        String[] whereArgs = null;
-//
-//        int result = db.update("CTHD",values,whereClause,whereArgs);
-//
-//        return result>0;
-//    }
+
     public boolean updateTrangThaiCTHD(int mahoadon){
         SQLiteDatabase database = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("trangthai",2);
+        long check = database.update("HoaDon",values,"mahoadon=?",new String[]{String.valueOf(mahoadon)});
+        return check != -1;
+    }
+    public boolean updateTrangThaiHD(int mahoadon){
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("trangthaihd",2);
         long check = database.update("HoaDon",values,"mahoadon=?",new String[]{String.valueOf(mahoadon)});
         return check != -1;
     }
