@@ -76,8 +76,8 @@ public class DetailActivity extends AppCompatActivity  {
                 if (mahoadon!=-1&&cthdDao.themCTHD(masanpham,mahoadon,1)) {
                     // Thông báo thành công
                     Toast.makeText(DetailActivity.this, "Thêm thành công vào giỏ hàng", Toast.LENGTH_SHORT).show();
-                    sanPhamDao.updateSoLuongGia(masanpham,quantity,giasanpham*quantity);
-
+                    sanPhamDao.updateSoLuong(masanpham,quantity);
+//,giasanpham*quantity
                 } else {
                     // Thông báo thất bại
                     Toast.makeText(DetailActivity.this, "Thêm vào giỏ hàng thất bại", Toast.LENGTH_SHORT).show();

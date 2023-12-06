@@ -1,7 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#03A9F4">
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginTop="-10dp"
+            android:id="@+id/img_backgroud"
+            android:layout_width="700dp"
+            android:layout_height="226dp"
+            android:layout_marginLeft="-17dp"
+            android:layout_marginRight="-15dp"
+            android:src="@drawable/img_backgroud"/>
+        <ImageView
+            android:id="@+id/img_person"
+            android:layout_width="110dp"
+            android:layout_height="130dp"
+            android:src="@drawable/ic_person"
+            android:layout_marginLeft="133dp"
+            android:layout_marginTop="150dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_cart"/>
+        <TextView
+            android:layout_marginTop="17dp"
+            android:id="@+id/tenn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textSize="27dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:id="@+id/txtdangxuat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng xuất"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_below="@id/img_person"/>
+        <TextView
+            android:id="@+id/txtthoat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thoát"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_below="@id/txtdangxuat"/>
+    </RelativeLayout>
+
+
+</ScrollView>

@@ -36,12 +36,12 @@ public class SanPhamDao {
         return list;
     }
 
-    public void updateSoLuongGia(int masanpham,int soluong,int gia) {
+    public void updateSoLuong(int masanpham,int soluong) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("soluong", soluong);
-        values.put("gia",gia);
-
+//        values.put("gia",gia);
+//,int gia
         db.update("SANPHAM", values,"masanpham=?",new String[]{String.valueOf(masanpham)});
 
         db.close();

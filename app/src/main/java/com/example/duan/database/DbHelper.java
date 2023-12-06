@@ -14,10 +14,11 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String tNguoiDung="CREATE TABLE NGUOIDUNG(manguoidung integer primary key autoincrement,sdt integer," +
-                "email text,diachi text,tentaikhoan text,matkhau text,hoten text)";
+                "email text,diachi text,tentaikhoan text,matkhau text,hoten text,role integer)";
         db.execSQL(tNguoiDung);
         db.execSQL("INSERT INTO NGUOIDUNG VALUES(1,0123456789,'dung@gmal.com','5482 Adobe Falls Rd # 15San \n" +
-                "Diego, Califorina (CA),92129','vandung','abc123','levandung')");
+                "Diego, Califorina (CA),92129','vandung','abc123','levandung',1),(1,0123456789,'dung@gmal.com','5482 Adobe Falls Rd # 15San \\n\" +\n" +
+                "                \"Diego, Califorina (CA),92129','vandung','abc123','levandung',2)");
 
 //    trangthai:
 //    1:ko yêu thích
