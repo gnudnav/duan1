@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import com.example.duan.adapter.CTHDAdapter;
 import com.example.duan.dao.CTHDDao;
 import com.example.duan.dao.HoaDonDao;
 import com.example.duan.dao.NguoiDungDao;
+import com.example.duan.database.DbHelper;
 import com.example.duan.fragment.Delivery_Fragment;
 import com.example.duan.model.CTHD;
 import com.example.duan.model.HoaDon;
@@ -47,7 +49,8 @@ public class Activity_Payment extends AppCompatActivity {
 
         TextView txttennguoidung=findViewById(R.id.txt_tennguoidung);
         TextView txtsdt=findViewById(R.id.txt_sdt);
-        TextView txtdiachii=findViewById(R.id.txt_diachi);
+        TextView txtdiachi=findViewById(R.id.txt_diachi);
+
 
         cthdDao=new CTHDDao(this);
         list=cthdDao.listgetDSCart();
@@ -87,6 +90,7 @@ public class Activity_Payment extends AppCompatActivity {
                 int mahoadon = hoaDonDao.themHD();
                 if(cthdDao.updateTrangThaiHD(mahoadon)){
                     // Nếu cập nhật thành công, chuyển đến màn hình thanh toán
+                    Toast.makeText(Activity_Payment.this, "Đặt mua thành công", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Activity_Payment.this, Activity_ThongBao.class);
                     // Gửi mã hoá đơn đến Activity thanh toán nếu cần thiết
                     intent.putExtra("mahoadon", mahoadon);

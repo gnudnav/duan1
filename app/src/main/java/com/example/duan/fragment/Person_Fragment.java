@@ -1,6 +1,7 @@
 package com.example.duan.fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.duan.R;
 import com.example.duan.activity.Activity_Cancel;
+import com.example.duan.activity.Activity_Edit_Profile;
+import com.example.duan.activity.Activity_NhapPass;
 import com.example.duan.activity.Welcome1Activity;
 
 public class Person_Fragment extends Fragment {
@@ -35,6 +38,24 @@ public class Person_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), Activity_Cancel.class));
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), Activity_Edit_Profile.class));
+            }
+        });
+        changed_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), Activity_NhapPass.class));
             }
         });
 
