@@ -14,9 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan.R;
 import com.example.duan.model.CTHD;
+import com.example.duan.model.SanPham;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class CTHDAdapter extends RecyclerView.Adapter<CTHDAdapter.ViewHolder>{
     private int quantity=1;
@@ -85,6 +87,13 @@ public class CTHDAdapter extends RecyclerView.Adapter<CTHDAdapter.ViewHolder>{
     @Override
     public int getItemCount() {
         return list.size();
+    }
+    public int tinhTongGia() {
+        int tongGia = 0;
+        for (CTHD cthd : list) {
+            tongGia += cthd.getGia(); // Giả sử có phương thức getGia() trong model CTHD
+        }
+        return tongGia;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

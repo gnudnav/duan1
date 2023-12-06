@@ -160,7 +160,7 @@ Diego, Califorina (CA),92129"/>
             android:textColor="#B3AFAF"
             android:textStyle="bold"/>
         <TextView
-            android:id="@+id/txt_giasanpham"
+            android:id="@+id/giasanphamhienthi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="6,000,000 đ"

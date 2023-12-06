@@ -22,6 +22,8 @@ import com.example.duan.model.CTHD;
 import com.example.duan.model.HoaDon;
 import com.example.duan.model.NguoiDung;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class Activity_Payment extends AppCompatActivity {
@@ -47,7 +49,6 @@ public class Activity_Payment extends AppCompatActivity {
         TextView txtsdt=findViewById(R.id.txt_sdt);
         TextView txtdiachii=findViewById(R.id.txt_diachi);
 
-
         cthdDao=new CTHDDao(this);
         list=cthdDao.listgetDSCart();
 
@@ -55,6 +56,14 @@ public class Activity_Payment extends AppCompatActivity {
         recyclerView_cthd.setLayoutManager(linearLayoutManager);
         cthdAdapter=new CTHDAdapter(Activity_Payment.this,list);
         recyclerView_cthd.setAdapter(cthdAdapter);
+
+        TextView giasanphamhienthi=findViewById(R.id.giasanphamhienthi);
+        int tonggia = cthdAdapter.tinhTongGia();
+        DecimalFormat decimalFormat = new DecimalFormat("#,###,###");
+        String formattedTongGia = decimalFormat.format(tonggia);
+        giasanphamhienthi.setText(formattedTongGia + " VND");
+
+
 
         int macthd=cthdAdapter.getItemCount();
         txt_quantity.setText(String.valueOf(macthd));

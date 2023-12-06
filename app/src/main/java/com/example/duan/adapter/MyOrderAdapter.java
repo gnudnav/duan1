@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan.R;
@@ -21,6 +22,7 @@ import com.example.duan.model.CTHD;
 import com.example.duan.model.HoaDon;
 import com.example.duan.model.SanPham;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHolder>{
@@ -61,7 +63,9 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
         }
         holder.loai.setText(loai);
         holder.txt_quantity.setText(String.valueOf(list.get(position).getSoluong()));
-        holder.gia.setText(String.valueOf(list.get(position).getGia()));
+
+        NumberFormat numberFormat=NumberFormat.getInstance();
+        holder.gia.setText(numberFormat.format(list.get(position).getGia())+"đ");
 
         SharedPreferences sharedPreferences= ((Activity) context).getSharedPreferences("dataUser",Context.MODE_PRIVATE);
         int role=sharedPreferences.getInt("role",-1);
@@ -114,7 +118,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView img;
         private TextView ten,loai,txt_quantity,gia;
-        private Button btn_xacnhan,btn_huy;
+        private AppCompatButton btn_xacnhan,btn_huy;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             img=itemView.findViewById(R.id.img);
