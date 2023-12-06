@@ -8,8 +8,9 @@ public class NguoiDung {
     private String tentaikhoan;
     private String matkhau;
     private String hoten;
+    private int role;
 
-    public NguoiDung(int manguoidung, int sdt, String email, String diachi, String tentaikhoan, String matkhau, String hoten) {
+    public NguoiDung(int manguoidung, int sdt, String email, String diachi, String tentaikhoan, String matkhau, String hoten, int role) {
         this.manguoidung = manguoidung;
         this.sdt = sdt;
         this.email = email;
@@ -17,6 +18,7 @@ public class NguoiDung {
         this.tentaikhoan = tentaikhoan;
         this.matkhau = matkhau;
         this.hoten = hoten;
+        this.role = role;
     }
 
     public int getManguoidung() {
@@ -73,5 +75,13 @@ public class NguoiDung {
 
     public void setHoten(String hoten) {
         this.hoten = hoten;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 }

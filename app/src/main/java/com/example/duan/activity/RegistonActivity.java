@@ -36,7 +36,7 @@ public class RegistonActivity extends AppCompatActivity {
                 String matkhau=edtmatkhau.getText().toString();
                 String sdt=edtsdt.getText().toString();
 
-                boolean check=nguoiDungDao.DangKy(tendangnhap,matkhau,sdt);
+                boolean check=nguoiDungDao.DangKy(tendangnhap,matkhau,sdt,1);
                 if(tendangnhap==""||matkhau==""||sdt==""){
                     Toast.makeText(RegistonActivity.this, "Mời ban nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 } else if (check){

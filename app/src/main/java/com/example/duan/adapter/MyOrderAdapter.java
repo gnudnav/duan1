@@ -2,6 +2,7 @@ package com.example.duan.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,16 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
         holder.loai.setText(loai);
         holder.txt_quantity.setText(String.valueOf(list.get(position).getSoluong()));
         holder.gia.setText(String.valueOf(list.get(position).getGia()));
+
+        SharedPreferences sharedPreferences= ((Activity) context).getSharedPreferences("dataUser",Context.MODE_PRIVATE);
+        int role=sharedPreferences.getInt("role",-1);
+        switch (role){
+            case 1:
+                holder.btn_xacnhan.setVisibility(View.GONE);
+                break;
+            case 2:
+                holder.btn_xacnhan.setVisibility(View.VISIBLE);
+        }
         holder.btn_xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
