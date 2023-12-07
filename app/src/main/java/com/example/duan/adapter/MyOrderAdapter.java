@@ -100,8 +100,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
                 boolean check=myOrderDao.updateTrangThaiHD(macthd,3);
                 if(check){
                     Toast.makeText(context, "Hủy thành công", Toast.LENGTH_SHORT).show();
-                    list.clear();
-                    list.addAll(myOrderDao.listgetDS());
+                    list.remove(holder.getAdapterPosition());
                     notifyDataSetChanged();
                 }else {
                     Toast.makeText(context, "Hủy thất bại", Toast.LENGTH_SHORT).show();
