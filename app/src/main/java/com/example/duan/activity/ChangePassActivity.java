@@ -3,7 +3,9 @@ package com.example.duan.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,7 +26,7 @@ public class ChangePassActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_pass);
-
+        SharedPreferences sharedPreferences = getSharedPreferences("dataUser", Context.MODE_PRIVATE);
         edtmatkhau=findViewById(R.id.edtmatkhau);
         edtRematkhau=findViewById(R.id.edtRematkhau);
         btnxacnhan=findViewById(R.id.btnxacnhan);
@@ -39,12 +41,25 @@ public class ChangePassActivity extends AppCompatActivity {
         });
 
         btnxacnhan.setOnClickListener(new View.OnClickListener() {
-            @Override
+            @   Override
             public void onClick(View v) {
-                String matkhau=edtmatkhau.getText().toString();
-                String Rematkhau=edtRematkhau.getText().toString();
-                if(!matkhau.equals(Rematkhau)){
-                    Toast.makeText(ChangePassActivity.this, "Hai mật khẩu không giống nhau", Toast.LENGTH_SHORT).show();
+                String matKhau = edtmatkhau.getText().toString();
+                String reMatKhau = edtRematkhau.getText().toString();
+                int manguoidung=sharedPreferences.getInt("manguoidung",-1);
+                boolean success = nguoiDungDao.DoiMatKhau(manguoidung, matKhau);
+
+
+                if(matKhau.isEmpty()||reMatKhau.isEmpty()){
+                    Toast.makeText(ChangePassActivity.this, "Vui lòng nhập đầy đủ", Toast.LENGTH_SHORT).show();
+                }else if(!matKhau.equals(reMatKhau)){
+                    Toast.makeText(ChangePassActivity.this, "2 mật khẩu không giống nhau", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (success) {
+                        Toast.makeText(ChangePassActivity.this, "Thành công "+manguoidung, Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(ChangePassActivity.this,Activity_Login.class));
+                    } else {
+                        Toast.makeText(ChangePassActivity.this, "Lỗi khi cập nhật mật khẩu", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

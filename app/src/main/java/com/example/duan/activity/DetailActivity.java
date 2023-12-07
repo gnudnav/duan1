@@ -36,6 +36,7 @@ public class DetailActivity extends AppCompatActivity  {
     private SanPhamDao sanPhamDao;
     private HoaDonDao hoaDonDao;
     private SanPham sanPham;
+    private SanPhamAdapter sanPhamAdapter;
 
 
 
@@ -115,16 +116,28 @@ public class DetailActivity extends AppCompatActivity  {
         }else {
             ic_heart.setImageResource(R.drawable.ic_img_heart_red);
         }
+        ArrayList<SanPham>list=new ArrayList<>();
+        sanPhamAdapter=new SanPhamAdapter(this,list);
         ic_heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 int matrangthai=sanPham.getMasanpham();
                 if(isHeartRed){
                     ic_heart.setImageResource(R.drawable.ic_img_heart_red);
                     sanPhamDao.updateTrangThai(matrangthai,2);
+                    list.clear();
+                    list.addAll(list);
+                    sanPhamAdapter.notifyDataSetChanged();
+
                 }else {
                     ic_heart.setImageResource(R.drawable.ic_img_heart_black);
                     sanPhamDao.updateTrangThai(matrangthai,1);
+                    list.clear();
+                    list.addAll(list);
+                    sanPhamAdapter.notifyDataSetChanged();
+
+
                 }
                 isHeartRed=!isHeartRed;
 

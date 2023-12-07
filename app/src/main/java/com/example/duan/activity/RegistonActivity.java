@@ -3,7 +3,9 @@ package com.example.duan.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -22,6 +24,7 @@ public class RegistonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registon);
+        SharedPreferences sharedPreferences = getSharedPreferences("dataUser", Context.MODE_PRIVATE);
 
         edttendangnhap=findViewById(R.id.edttendangnhap);
         edtmatkhau=findViewById(R.id.edtmatkhau);
@@ -32,22 +35,58 @@ public class RegistonActivity extends AppCompatActivity {
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String tendangnhap=edttendangnhap.getText().toString();
-                String matkhau=edtmatkhau.getText().toString();
-                String sdt=edtsdt.getText().toString();
+                String tendangnhap = edttendangnhap.getText().toString();
+                String matkhau = edtmatkhau.getText().toString();
+                String sdtString = edtsdt.getText().toString();
 
-                boolean check=nguoiDungDao.DangKy(tendangnhap,matkhau,sdt,1);
-                if(tendangnhap==""||matkhau==""||sdt==""){
-                    Toast.makeText(RegistonActivity.this, "Mời ban nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-                } else if (check){
-                    Toast.makeText(RegistonActivity.this, "Bạn đã đăng ký thành công", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(RegistonActivity.this, Activity_Login.class));
-                }else{
-                    Toast.makeText(RegistonActivity.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+                if (tendangnhap.isEmpty() || matkhau.isEmpty() || sdtString.isEmpty()) {
+                    Toast.makeText(RegistonActivity.this, "Mời bạn nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Convert sdtString to int
+                    int sdt = 0;
+                    try {
+                        sdt = Integer.parseInt(sdtString);
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(RegistonActivity.this, "Số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show();
+                        return; // Exit the method if the phone number is not a valid integer
+                    }
+
+                    // Check if the phone number already exists
+                    if (nguoiDungDao.kiemtrasdtTonTai(sdt)) {
+                        Toast.makeText(RegistonActivity.this, "Số điện thoại đã tồn tại", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    boolean check = nguoiDungDao.DangKy(tendangnhap, matkhau, String.valueOf(sdt));
+
+                    // Kiểm tra số điện thoại
+                    if (kiemtrasdt(sdt)) {
+                        if (check) {
+                            int manguoidung = sharedPreferences.getInt("manguoidung", -1);
+                            Toast.makeText(RegistonActivity.this, "Bạn đã đăng ký thành công" + manguoidung, Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(RegistonActivity.this, Activity_Login.class));
+                        } else {
+                            Toast.makeText(RegistonActivity.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(RegistonActivity.this, "Số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show();
+                    }
                 }
-
             }
         });
 
+
+
+    }
+    private boolean kiemtrasdt(int number){
+        return true;
+    }
+    private boolean checkPhoneNumberExists(int phoneNumber) {
+        // Implement the logic to check if the phone number exists in your database
+        // Return true if the phone number exists, false otherwise
+        // You might use a database query or some other method to perform this check
+        // For example:
+        // return myDatabaseHelper.checkPhoneNumberExists(phoneNumber);
+        return false;
     }
 }

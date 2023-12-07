@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Duan"
         tools:targetApi="34" >
         <activity
-            android:name=".activity.Activity_Changed_Pass"
+            android:name=".activity.Activity_ChangedPass_on_main"
             android:exported="false" />
         <activity
             android:name=".activity.Activity_NhapPass"
