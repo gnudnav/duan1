@@ -10,6 +10,9 @@ public class NguoiDung {
     private String hoten;
     private int role;
 
+    public NguoiDung() {
+    }
+
     public NguoiDung(int manguoidung, int sdt, String email, String diachi, String tentaikhoan, String matkhau, String hoten, int role) {
         this.manguoidung = manguoidung;
         this.sdt = sdt;

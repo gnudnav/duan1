@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +43,7 @@ public class DetailActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        SharedPreferences sharedPreferences = getSharedPreferences("dataUser", Context.MODE_PRIVATE);
 
         Bundle bundle=getIntent().getExtras();
         if(bundle==null){
@@ -69,15 +71,14 @@ public class DetailActivity extends AppCompatActivity  {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int giasanpham=sanPham.getGia();
                 int masanpham = sanPham.getMasanpham();
-                int mahoadon=hoaDonDao.themHD();
+                int manguoidung=sharedPreferences.getInt("manguoidung",-1);
+                int mahoadon=hoaDonDao.themHD(manguoidung);
                 // Thêm vào bảng CTHD trong CTHDDao
                 if (mahoadon!=-1&&cthdDao.themCTHD(masanpham,mahoadon,1)) {
                     // Thông báo thành công
-                    Toast.makeText(DetailActivity.this, "Thêm thành công vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailActivity.this, "Thêm thành công vào giỏ hàng"+manguoidung, Toast.LENGTH_SHORT).show();
                     sanPhamDao.updateSoLuong(masanpham,quantity);
-//,giasanpham*quantity
                 } else {
                     // Thông báo thất bại
                     Toast.makeText(DetailActivity.this, "Thêm vào giỏ hàng thất bại", Toast.LENGTH_SHORT).show();

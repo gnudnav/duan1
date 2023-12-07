@@ -25,8 +25,11 @@ public class NguoiDungDao {
     public boolean KiemTraDangNhap(String tendangnhap, String matkhau){
         SQLiteDatabase sqLiteDatabase=dbHelper.getReadableDatabase();
         Cursor cursor=sqLiteDatabase.rawQuery("SELECT * FROM NGUOIDUNG WHERE tentaikhoan=? and matkhau=?",new String[]{tendangnhap,matkhau});
+        int manguoidung=-1;
         if(cursor.moveToFirst()){
+            manguoidung=cursor.getInt(0);
             SharedPreferences.Editor editor=sharedPreferences.edit();
+            editor.putInt("manguoidung", manguoidung);
             editor.putInt("role",cursor.getInt(7));
             editor.apply();
         }

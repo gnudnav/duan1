@@ -34,7 +34,7 @@ public class Delivery_Fragment extends Fragment {
             }
         });
 
-        Fragment[] fragments={new Tab_MyOrder_Fragment(),new Tab_History_Fragment()};
+        Fragment[] fragments={new Tab_MyOrder_Fragment(),new Tab_History_Fragment(),new Tab_Cancel_Fragment()};
 
         ViewPager2FragmentAdapter viewPager2FragmentAdapter=new ViewPager2FragmentAdapter(requireActivity(), fragments);
         viewPager2.setAdapter(viewPager2FragmentAdapter);
@@ -49,6 +49,8 @@ public class Delivery_Fragment extends Fragment {
                         case 1:
                             tab.setText("History");
                             break;
+                        case 2:
+                            tab.setText("Cancel");
                     }
                 }
         ).attach();

@@ -25,7 +25,7 @@ public class CTHDDao {
         Cursor cursor=sqLiteDatabase.rawQuery("SELECT cthd.macthd, cthd.masanpham, hoadon.mahoadon,hoadon.trangthaihd,sanpham.gia, sanpham.imgsanpham, sanpham.ten, sanpham.tenbrand, sanpham.maloai, sanpham.soluong,cthd.trangthaicthd\n" +
                 "FROM CTHD cthd\n" +
                 "JOIN SANPHAM sanpham ON cthd.masanpham = sanpham.masanpham\n" +
-                "JOIN HOADON hoadon ON cthd.mahoadon = hoadon.mahoadon WHERE hoadon.trangthaihd=1\n",null);
+                "JOIN HOADON hoadon ON cthd.mahoadon = hoadon.mahoadon WHERE hoadon.trangthaihd=1 \n",null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do {

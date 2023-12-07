@@ -52,6 +52,7 @@ public class Home_Fragment extends Fragment {
                         case 1:
                             tab.setText("Category");
                             break;
+
                     }
                 }
         ).attach();

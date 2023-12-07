@@ -18,7 +18,7 @@ public class HoaDonDao {
         dbHelper=new DbHelper(context);
     }
 
-    public int themHD() {
+    public int themHD(int manguoidung) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         // Kiểm tra xem có hoa don hiện tại với trạng thái 1 hay 2 không
@@ -32,7 +32,7 @@ public class HoaDonDao {
             // Nếu không có hoá đơn với trạng thái 1, tạo một hoá đơn mới với trạng thái 1
             ContentValues values = new ContentValues();
             values.put("trangthaihd", 1);
-            values.put("manguoidung", 1);
+            values.put("manguoidung", manguoidung);
             long mahoadon = db.insert("HOADON", null, values);
             existingMahoadon = (int) mahoadon;
         }

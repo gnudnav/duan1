@@ -5,7 +5,9 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -41,6 +43,7 @@ public class Activity_Payment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
+        SharedPreferences sharedPreferences = getSharedPreferences("dataUser", Context.MODE_PRIVATE);
         edit=findViewById(R.id.edit);
         ic_back=findViewById(R.id.ic_back);
         btn_confirm=findViewById(R.id.btn_confirm);
@@ -87,10 +90,11 @@ public class Activity_Payment extends AppCompatActivity {
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int mahoadon = hoaDonDao.themHD();
+                int manguoidung=sharedPreferences.getInt("manguoidung",-1);
+                int mahoadon=hoaDonDao.themHD(manguoidung);
                 if(cthdDao.updateTrangThaiHD(mahoadon)){
                     // Nếu cập nhật thành công, chuyển đến màn hình thanh toán
-                    Toast.makeText(Activity_Payment.this, "Đặt mua thành công", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Activity_Payment.this, "Đặt mua thành công"+manguoidung, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Activity_Payment.this, Activity_ThongBao.class);
                     // Gửi mã hoá đơn đến Activity thanh toán nếu cần thiết
                     intent.putExtra("mahoadon", mahoadon);
