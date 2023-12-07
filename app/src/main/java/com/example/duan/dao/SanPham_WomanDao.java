@@ -21,7 +21,7 @@ public class SanPham_WomanDao {
         if(cursor.getCount()>0){
             cursor.moveToNext();
             do {
-                list.add(new SanPham(cursor.getInt(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5),cursor.getInt(6),cursor.getInt(7)));
+                list.add(new SanPham(cursor.getInt(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5),cursor.getInt(6)));
             }while (cursor.moveToNext());
         }
 

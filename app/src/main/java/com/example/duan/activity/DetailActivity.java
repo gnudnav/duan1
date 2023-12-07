@@ -28,14 +28,14 @@ import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity  {
     private int quantity=1;
-    private TextView txt_quantity;
-    private ImageView ic_cart;
-    private ImageView ic_heart;
+    private TextView txt_quantity,txt_tensanpham,txt_giasanpham;
+    private ImageView ic_cart,ic_heart,ic_back,img_sanpham,dautru,daucong;
     private Button btn_add;
     private boolean isHeartRed=false;
     private CTHDDao cthdDao;
     private SanPhamDao sanPhamDao;
     private HoaDonDao hoaDonDao;
+    private SanPham sanPham;
 
 
 
@@ -53,11 +53,14 @@ public class DetailActivity extends AppCompatActivity  {
         sanPhamDao=new SanPhamDao(this);
         hoaDonDao=new HoaDonDao(this);
 
-        SanPham sanPham= (SanPham) bundle.get("object");
-
-        TextView txt_tensanpham=findViewById(R.id.txt_tensanpham);
-        ImageView img_sanpham=findViewById(R.id.img_sanpham);
-        TextView txt_giasanpham=findViewById(R.id.txt_giasanpham);
+        sanPham= (SanPham) bundle.get("object");
+        ic_back=findViewById(R.id.ic_back);
+        dautru=findViewById(R.id.dautru);
+        daucong=findViewById(R.id.daucong);
+        txt_quantity=findViewById(R.id.txt_quantity);
+        txt_tensanpham=findViewById(R.id.txt_tensanpham);
+        img_sanpham=findViewById(R.id.img_sanpham);
+        txt_giasanpham=findViewById(R.id.txt_giasanpham);
 
         ic_cart=findViewById(R.id.ic_cart);
         ic_heart=findViewById(R.id.heart);
@@ -75,10 +78,10 @@ public class DetailActivity extends AppCompatActivity  {
                 int manguoidung=sharedPreferences.getInt("manguoidung",-1);
                 int mahoadon=hoaDonDao.themHD(manguoidung);
                 // Thêm vào bảng CTHD trong CTHDDao
-                if (mahoadon!=-1&&cthdDao.themCTHD(masanpham,mahoadon,1)) {
+                if (mahoadon!=-1&&cthdDao.themCTHD(masanpham,mahoadon,1,quantity)) {
                     // Thông báo thành công
                     Toast.makeText(DetailActivity.this, "Thêm thành công vào giỏ hàng"+manguoidung, Toast.LENGTH_SHORT).show();
-                    sanPhamDao.updateSoLuong(masanpham,quantity);
+                    cthdDao.updateSoLuong(masanpham,quantity);
                 } else {
                     // Thông báo thất bại
                     Toast.makeText(DetailActivity.this, "Thêm vào giỏ hàng thất bại", Toast.LENGTH_SHORT).show();
@@ -86,10 +89,6 @@ public class DetailActivity extends AppCompatActivity  {
 
             }
         });
-        ImageView ic_back=findViewById(R.id.ic_back);
-        ImageView dautru=findViewById(R.id.dautru);
-        ImageView daucong=findViewById(R.id.daucong);
-        txt_quantity=findViewById(R.id.txt_quantity);
 
         dautru.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,8 +102,6 @@ public class DetailActivity extends AppCompatActivity  {
                 tang();
             }
         });
-
-
 
         ic_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,25 +132,20 @@ public class DetailActivity extends AppCompatActivity  {
         });
 
 
-            txt_tensanpham.setText(sanPham.getTen());
-
-//
-//
-//            txt_giasanpham.setText(numberFormat.format(String.valueOf(sanPham.getGia())));
+        txt_tensanpham.setText(sanPham.getTen());
 
         Object giaObject = sanPham.getGia();
         int gia=(Integer)giaObject;
         NumberFormat numberFormat=NumberFormat.getInstance();
         txt_giasanpham.setText(numberFormat.format(gia));
 
-            txt_quantity.setText(String.valueOf(sanPham.getSoluong()));
+        txt_quantity.setText(String.valueOf(quantity));
             //ham hien thị hình ảnh lên detail
-            Bundle bundle1=getIntent().getExtras();
-            if(bundle1!=null){
-                SanPham sanPham1=(SanPham) bundle.getSerializable("object");
-                if(sanPham1!=null){
-                    int imgSanPham=getResources().getIdentifier(sanPham1.getImgsanpham(),"drawable",getPackageName());
-                    img_sanpham.setImageResource(imgSanPham);
+        Bundle bundle1=getIntent().getExtras();
+        if(bundle1!=null){
+            SanPham sanPham1=(SanPham) bundle.getSerializable("object");
+            if(sanPham1!=null){
+                int imgSanPham=getResources().getIdentifier(sanPham1.getImgsanpham(),"drawable",getPackageName());img_sanpham.setImageResource(imgSanPham);
                 }
             }
         //ham hien thị hình ảnh lên detail

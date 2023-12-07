@@ -53,9 +53,13 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             loai="Couple";
         }
         holder.loai.setText(loai);
-        holder.txt_quantity.setText(String.valueOf(list.get(position).getSoluong()));
+        holder.txt_quantity.setText(String.valueOf(list.get(position).getSoluongcthd()));
         NumberFormat numberFormat=NumberFormat.getInstance();
-        holder.gia.setText(numberFormat.format(list.get(position).getGia())+"đ");
+
+        int gia=list.get(position).getGia();
+        int quantityy=list.get(position).getSoluongcthd();
+        double totalGia=gia*quantityy;
+        holder.gia.setText(numberFormat.format(totalGia)+"đ");
     }
 
     @Override

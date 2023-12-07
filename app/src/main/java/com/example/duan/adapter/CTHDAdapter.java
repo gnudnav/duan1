@@ -24,6 +24,8 @@ public class CTHDAdapter extends RecyclerView.Adapter<CTHDAdapter.ViewHolder>{
     private int quantity=1;
     private Context context;
     private ArrayList<CTHD>list;
+    double totalGia;
+
 
     public CTHDAdapter(Context context, ArrayList<CTHD> list) {
         this.context = context;
@@ -58,10 +60,13 @@ public class CTHDAdapter extends RecyclerView.Adapter<CTHDAdapter.ViewHolder>{
         }
         holder.loai.setText(loai);
         NumberFormat numberFormat=NumberFormat.getInstance();
-        holder.gia.setText(numberFormat.format(list.get(position).getGia())+"đ");
+        int gia=list.get(position).getGia();
+        int quantityy=list.get(position).getSoluongcthd();
+        totalGia=gia*quantityy;
+        holder.gia.setText(numberFormat.format(totalGia)+"đ");
 
 
-        holder.txt_quantity.setText(String.valueOf(list.get(position).getSoluong()));
+        holder.txt_quantity.setText(String.valueOf(quantityy));
         holder.dautru.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,15 +94,15 @@ public class CTHDAdapter extends RecyclerView.Adapter<CTHDAdapter.ViewHolder>{
         return list.size();
     }
     public int tinhTongGia() {
-        int tongGia = 0;
+        int totalTongGia = 0;
         for (CTHD cthd : list) {
-            tongGia += cthd.getGia(); // Giả sử có phương thức getGia() trong model CTHD
+            int gia = cthd.getGia();
+            int quantity = cthd.getSoluongcthd();
+            totalTongGia += gia * quantity;
         }
-        return tongGia;
+        return totalTongGia;
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private CheckBox checkBox;
         private ImageView img;
         private TextView ten,loai,txt_quantity,gia;
         private ImageView dautru;

@@ -29,23 +29,11 @@ public class SanPhamDao {
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do {
-                list.add(new SanPham(cursor.getInt(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5),cursor.getInt(6),cursor.getInt(7)));
+                list.add(new SanPham(cursor.getInt(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5),cursor.getInt(6)));
             }while (cursor.moveToNext());
         }
 
         return list;
-    }
-
-    public void updateSoLuong(int masanpham,int soluong) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("soluong", soluong);
-//        values.put("gia",gia);
-//,int gia
-        db.update("SANPHAM", values,"masanpham=?",new String[]{String.valueOf(masanpham)});
-
-        db.close();
-
     }
     public ArrayList<SanPham> listgetDS(){
         ArrayList<SanPham> list=new ArrayList<>();
@@ -54,7 +42,7 @@ public class SanPhamDao {
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do {
-                list.add(new SanPham(cursor.getInt(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5),cursor.getInt(6),cursor.getInt(7)));
+                list.add(new SanPham(cursor.getInt(0),cursor.getInt(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5),cursor.getInt(6)));
             }while (cursor.moveToNext());
         }
 

@@ -44,13 +44,13 @@ public class Delivery_Fragment extends Fragment {
                 (tab, position) -> {
                     switch (position) {
                         case 0:
-                            tab.setText("My Order");
+                            tab.setText("Wait For Confirmation");
                             break;
                         case 1:
-                            tab.setText("History");
+                            tab.setText("Purchase History");
                             break;
                         case 2:
-                            tab.setText("Cancel");
+                            tab.setText("Cancel Order");
                     }
                 }
         ).attach();

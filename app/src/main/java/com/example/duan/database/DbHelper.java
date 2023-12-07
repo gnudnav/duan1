@@ -24,30 +24,33 @@ public class DbHelper extends SQLiteOpenHelper {
 //    1:ko yêu thích
 //    2:yêu thích
         String tSanPham="CREATE TABLE SANPHAM(masanpham integer primary key autoincrement,gia integer,imgsanpham text,ten text," +
-                "tenbrand text references BRAND(tenbrand),maloai integer references LOAI(maloai),soluong integer,trangthai integer)";
+                "tenbrand text references BRAND(tenbrand),maloai integer references LOAI(maloai),trangthai integer)";
         db.execSQL(tSanPham);
-        db.execSQL("INSERT INTO SANPHAM VALUES(1,8600000,'img_breguet_breguettradition','Breguet Tradition 7057BB/G9/9W6','ic_brand_breguet',1,1,1),(2,1000000,'img_breguet_breguetclassic','Breguet Classicque 714BR/12/9WU','ic_brand_breguet',1,1,1)," +
-                "(3,900000,'img_breitling_avengerchronograph','Breitling Avenger Chronograph 45 Night Mission','ic_brand_breitling',2,1,1),(4,1000000,'img_breitling_beritling1884','Breitling Avenger Chronograph 45 Night Mission','ic_brand_breitling',2,1,1)," +
-                "(5,500000,'img_couple_casio_casiodoi','Casio Đôi-Quarts(Pin)-Dây Da','brand_casio',3,1,1),(6,2100000,'img_couple_koi_koidoi','Koi Đôi-Quarts(Pin)-Dây Da','brand_chanel',3,1,1)," +
-                "(7,1900000,'img_man_seiko_seiko5','Seiko 5 Sports 55th Anniversary Limited Edition','brand_chanel',1,1,1)," +
-                "(8,3600000,'img_chanel_j12caliber','j12caliber','brand_chanel',2,1,1)," +
-                "(9,2200000,'img_couple_certina_certinadoi','Certina Đôi-Kính Sapphire-Automatic','brand_chanel',3,1,1)," +
-                "(10,6800000,'img_man_citizen_citizenbi5070','Citizen Bi5070-57H-Nam','brand_citizen',1,1,1)," +
-                "(11,9600000,'img_chanel_j12caliber','j12caliber','brand_chanel',2,1,1)," +
-                "(12,4500000,'img_couple_koi_koidoi_sapphire','Koi Đôi-Kính Sapphire-Quarts(Pin)-Dây Da','brand_chanel',3,1,1)," +
-                "(13,6500000,'img_man_srwatch_srsg19191','Sr Sg 1919.4101_Nam-Kính Sapphire-Automactic','brand_chanel',1,1,1)," +
-                "(14,1000000,'img_chanel_j12caliber','j12caliber','brand_chanel',2,1,1)," +
-                "(15,1200000,'img_couple_doxa_doxadoi_sapphire','Doxa Đôi-Kính Sapphire-Quarts(Pin)_Dây Kim Loại','brand_doxa',3,1,1)," +
-                "(16,5600000,'img_man_gshock_gshockga','G-Shock Ga-B2100-1A1Dr-Nam-Tough-Solar','brand_chanel',1,1,1)," +
-                "(17,3500000,'img_chanel_j12caliber','j12caliber','brand_chanel',2,1,1)," +
-                "(18,900000,'img_couple_calvin_calvindoi_daykimloai','Calvin Klein Đôi-Quarts(Pin)-Dây Kim Loại','brand_chanel',3,1,1)," +
-                "(19,1000000,'img_man_dw_dwiconic','Daniel Wellington Iconic Motion DW00100425-Nam-Quartz','brand_dw',1,1,1)," +
-                "(20,2200000,'img_chanel_j12caliber','j12caliber','brand_chanel',2,1,1)," +
-                "(21,3300000,'img_couple_citizen_citizendoi_eco','Citizen Đôi-Eco-Drive','brand_citizen',3,1,1)," +
-                "(22,1200000,'img_man_casio_casioecb','Casio ECB-950DB-2ADF-Nam-Solar-Dây Kim Loại','brand_casio',1,1,1)," +
-                "(23,1000000,'img_chanel_j12caliber','j12caliber','brand_chanel',2,1,2)," +
-                "(24,2000000,'img_couple_tissot_tissotdoi_sapphire','Tissot Đôi-Kính Sapphire-Quartz(Pin)-Dây Kim Loại','brand_tissot',3,1,2)");
-
+        db.execSQL("INSERT INTO SANPHAM (masanpham, gia, imgsanpham, ten, tenbrand, maloai, trangthai) " +
+                "VALUES (1, 8600000, 'img_breguet_breguettradition', 'Breguet Tradition 7057BB/G9/9W6', 'ic_brand_breguet', 1, 1), " +
+                "(2, 1000000, 'img_breguet_breguetclassic', 'Breguet Classicque 714BR/12/9WU', 'ic_brand_breguet', 1, 1), " +
+                "(3, 900000, 'img_breitling_avengerchronograph', 'Breitling Avenger Chronograph 45 Night Mission', 'ic_brand_breitling', 2, 1), " +
+                "(4, 1000000, 'img_breitling_beritling1884', 'Breitling Avenger Chronograph 45 Night Mission', 'ic_brand_breitling', 2, 1), " +
+                "(5, 500000, 'img_couple_casio_casiodoi', 'Casio Đôi-Quarts(Pin)-Dây Da', 'brand_casio', 3, 1), " +
+                "(6, 2100000, 'img_couple_koi_koidoi', 'Koi Đôi-Quarts(Pin)-Dây Da', 'brand_chanel', 3, 1), " +
+                "(7, 1900000, 'img_man_seiko_seiko5', 'Seiko 5 Sports 55th Anniversary Limited Edition', 'brand_chanel', 2, 1), " +
+                "(8, 3600000, 'img_chanel_j12caliber', 'j12caliber', 'brand_chanel', 2, 1), " +
+                "(9, 2200000, 'img_couple_certina_certinadoi', 'Certina Đôi-Kính Sapphire-Automatic', 'brand_chanel', 3, 1), " +
+                "(10, 6800000, 'img_man_citizen_citizenbi5070', 'Citizen Bi5070-57H-Nam', 'brand_citizen', 1, 1), " +
+                "(11, 9600000, 'img_chanel_j12caliber', 'j12caliber', 'brand_chanel', 2, 1), " +
+                "(12, 4500000, 'img_couple_koi_koidoi_sapphire', 'Koi Đôi-Kính Sapphire-Quarts(Pin)-Dây Da', 'brand_chanel', 3, 1), " +
+                "(13, 6500000, 'img_man_srwatch_srsg19191', 'Sr Sg 1919.4101_Nam-Kính Sapphire-Automactic', 'brand_chanel', 1, 1), " +
+                "(14, 1000000, 'img_chanel_j12caliber', 'j12caliber', 'brand_chanel', 2, 1), " +
+                "(15, 1200000, 'img_couple_doxa_doxadoi_sapphire', 'Doxa Đôi-Kính Sapphire-Quarts(Pin)_Dây Kim Loại', 'brand_doxa', 3, 1), " +
+                "(16, 5600000, 'img_man_gshock_gshockga', 'G-Shock Ga-B2100-1A1Dr-Nam-Tough-Solar', 'brand_chanel', 1, 1), " +
+                "(17, 3500000, 'img_chanel_j12caliber', 'j12caliber', 'brand_chanel', 2, 1), " +
+                "(18, 900000, 'img_couple_calvin_calvindoi_daykimloai', 'Calvin Klein Đôi-Quarts(Pin)-Dây Kim Loại', 'brand_chanel', 3, 1), " +
+                "(19, 1000000, 'img_man_dw_dwiconic', 'Daniel Wellington Iconic Motion DW00100425-Nam-Quartz', 'brand_dw', 1, 1), " +
+                "(20, 2200000, 'img_chanel_j12caliber', 'j12caliber', 'brand_chanel', 2, 1), " +
+                "(21, 3300000, 'img_couple_citizen_citizendoi_eco', 'Citizen Đôi-Eco-Drive', 'brand_citizen', 3, 1), " +
+                "(22, 1200000, 'img_man_casio_casioecb', 'Casio ECB-950DB-2ADF-Nam-Solar-Dây Kim Loại', 'brand_casio', 1, 1), " +
+                "(23, 1000000, 'img_chanel_j12caliber', 'j12caliber', 'brand_chanel', 2, 1), " +
+                "(24, 2000000, 'img_couple_tissot_tissotdoi_sapphire', 'Tissot Đôi-Kính Sapphire-Quartz(Pin)-Dây Kim Loại', 'brand_tissot', 3, 1)");
 
         String tBrand="CREATE TABLE BRAND(mabrand integer primary key autoincrement,tenbrand text)";
         db.execSQL(tBrand);
@@ -68,7 +71,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String tHoaDon="CREATE TABLE HOADON(mahoadon integer primary key autoincrement," +
                 "trangthaihd integer,manguoidung integer references NGUOIDUNG(manguoidung))";
         db.execSQL(tHoaDon);
-//        db.execSQL("INSERT INTO HOADON VALUES(1,2,1),(2,1,1)");
+        db.execSQL("INSERT INTO HOADON VALUES(1,2,1),(2,1,1)");
 
 //        trangthaicthd
 //        1:chưa xác nhận
@@ -77,7 +80,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String tCTHD="CREATE TABLE CTHD(macthd integer primary key autoincrement,masanpham integer references SANPHAM(masanpham)," +
                 "mahoadon integer references HOADON(mahoadon),trangthaicthd integer,soluongcthd integer)";
         db.execSQL(tCTHD);
-        db.execSQL("INSERT INTO CTHD VALUES(1,1,1,1,2),(2,2,1,1,2),(3,2,1,1,2),(4,3,2,2,2)");
+        db.execSQL("INSERT INTO CTHD VALUES(1,1,1,1,1),(2,2,1,1,1),(3,2,1,1,1),(4,3,2,2,1)");
 
     }
 

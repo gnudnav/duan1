@@ -21,9 +21,7 @@
         <activity
             android:name=".activity.Activity_Edit_Profile"
             android:exported="false" />
-        <activity
-            android:name=".activity.Activity_Cancel"
-            android:exported="false" />
+
         <activity
             android:name=".activity.Activity_ThongBao"
             android:exported="false" />
