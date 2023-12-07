@@ -13,14 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan.R;
-import com.example.duan.adapter.CTHDAdapter;
 import com.example.duan.adapter.SanPhamAdapter;
 import com.example.duan.dao.CTHDDao;
 import com.example.duan.dao.HoaDonDao;
 import com.example.duan.dao.SanPhamDao;
-import com.example.duan.database.DbHelper;
-import com.example.duan.model.CTHD;
-import com.example.duan.model.HoaDon;
 import com.example.duan.model.SanPham;
 
 import java.text.NumberFormat;
@@ -126,16 +122,12 @@ public class DetailActivity extends AppCompatActivity  {
                 if(isHeartRed){
                     ic_heart.setImageResource(R.drawable.ic_img_heart_red);
                     sanPhamDao.updateTrangThai(matrangthai,2);
-                    list.clear();
-                    list.addAll(list);
-                    sanPhamAdapter.notifyDataSetChanged();
+
 
                 }else {
                     ic_heart.setImageResource(R.drawable.ic_img_heart_black);
                     sanPhamDao.updateTrangThai(matrangthai,1);
-                    list.clear();
-                    list.addAll(list);
-                    sanPhamAdapter.notifyDataSetChanged();
+
 
 
                 }
