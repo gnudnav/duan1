@@ -22,7 +22,7 @@ public class HoaDonDao {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         // Kiểm tra xem có hoa don hiện tại với trạng thái 1 hay 2 không
-        Cursor cursor = db.rawQuery("SELECT mahoadon FROM HOADON WHERE manguoidung = 1 AND trangthaihd = 1", null);
+        Cursor cursor = db.rawQuery("SELECT mahoadon FROM HOADON WHERE trangthaihd = 1", null);
 
         int existingMahoadon;
         if (cursor.moveToFirst()) {

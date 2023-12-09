@@ -48,10 +48,8 @@ public class RegistonActivity extends AppCompatActivity {
                         sdt = Integer.parseInt(sdtString);
                     } catch (NumberFormatException e) {
                         Toast.makeText(RegistonActivity.this, "Số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show();
-                        return; // Exit the method if the phone number is not a valid integer
+                        return;
                     }
-
-                    // Check if the phone number already exists
                     if (nguoiDungDao.kiemtrasdtTonTai(sdt)) {
                         Toast.makeText(RegistonActivity.this, "Số điện thoại đã tồn tại", Toast.LENGTH_SHORT).show();
                         return;
@@ -80,13 +78,5 @@ public class RegistonActivity extends AppCompatActivity {
     }
     private boolean kiemtrasdt(int number){
         return true;
-    }
-    private boolean checkPhoneNumberExists(int phoneNumber) {
-        // Implement the logic to check if the phone number exists in your database
-        // Return true if the phone number exists, false otherwise
-        // You might use a database query or some other method to perform this check
-        // For example:
-        // return myDatabaseHelper.checkPhoneNumberExists(phoneNumber);
-        return false;
     }
 }

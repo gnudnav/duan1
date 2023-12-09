@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.example.duan.R;
 import com.example.duan.fragment.Delivery_Fragment;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         frameLayout=findViewById(R.id.frameLayout);
         bottomNavigationView=findViewById(R.id.bottomNavigationView);
 
+        //hàm mặc định
         loadFragment(new Home_Fragment());
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -45,12 +47,8 @@ public class MainActivity extends AppCompatActivity {
                 return loadFragment(fragment);
             }
         });
-        Intent intent=getIntent();
-        if(intent.getBooleanExtra("openDeliveryFragment",false)){
-            loadFragment(new Delivery_Fragment());
-        }
     }
-
+    //hàm chuyển
     private boolean loadFragment(Fragment fragment){
         if(fragment!=null){
             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment)

@@ -117,28 +117,22 @@ public class DetailActivity extends AppCompatActivity  {
         ic_heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                int matrangthai=sanPham.getMasanpham();
+                int masanpham=sanPham.getMasanpham();
                 if(isHeartRed){
                     ic_heart.setImageResource(R.drawable.ic_img_heart_red);
-                    sanPhamDao.updateTrangThai(matrangthai,2);
-
-
+                    sanPhamDao.updateTrangThai(masanpham,2);
                 }else {
                     ic_heart.setImageResource(R.drawable.ic_img_heart_black);
-                    sanPhamDao.updateTrangThai(matrangthai,1);
-
-
-
+                    sanPhamDao.updateTrangThai(masanpham,1);
                 }
                 isHeartRed=!isHeartRed;
+                list.clear();
+                list.addAll(sanPhamDao.listgetDS());
+                sanPhamAdapter.notifyDataSetChanged();
 
             }
         });
-
-
         txt_tensanpham.setText(sanPham.getTen());
-
         Object giaObject = sanPham.getGia();
         int gia=(Integer)giaObject;
         NumberFormat numberFormat=NumberFormat.getInstance();

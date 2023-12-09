@@ -17,6 +17,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan.R;
+import com.example.duan.dao.CTHDDao;
 import com.example.duan.dao.MyOrderDao;
 import com.example.duan.model.CTHD;
 import com.example.duan.model.HoaDon;
@@ -86,9 +87,9 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
                 boolean check=myOrderDao.updateTrangThaiHD(macthd,2);
                 if(check){
                     Toast.makeText(context, "Xác nhận thành công", Toast.LENGTH_SHORT).show();
-                    int position = holder.getAdapterPosition();
-                    list.remove(position);
-                    notifyItemRemoved(position);
+                    list.clear();
+                    list.addAll(myOrderDao.listgetDS());
+                    notifyDataSetChanged();
                 }else {
                     Toast.makeText(context, "Xác nhận thất bại", Toast.LENGTH_SHORT).show();
                 }
@@ -103,9 +104,12 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
                 boolean check=myOrderDao.updateTrangThaiHD(macthd,3);
                 if(check){
                     Toast.makeText(context, "Hủy thành công", Toast.LENGTH_SHORT).show();
-                    int position = holder.getAdapterPosition();
-                    list.remove(position);
-                    notifyItemRemoved(position);
+//                    int position = holder.getAdapterPosition();
+//                    list.remove(position);
+//                    notifyItemRemoved(position);
+                    list.clear();
+                    list.addAll(myOrderDao.listgetDS());
+                    notifyDataSetChanged();
                 }else {
                     Toast.makeText(context, "Hủy thất bại", Toast.LENGTH_SHORT).show();
                 }
