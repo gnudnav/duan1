@@ -37,13 +37,14 @@
            android:src="@drawable/ic_right"
            android:layout_alignParentRight="true" />
        <androidx.recyclerview.widget.RecyclerView
+           android:layout_marginTop="10dp"
            android:id="@+id/recyclerView_brand"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_below="@+id/name_brand"
            android:orientation="horizontal"/>
        <TextView
-           android:layout_marginTop="7dp"
+           android:layout_marginTop="10dp"
            android:id="@+id/name_product"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"

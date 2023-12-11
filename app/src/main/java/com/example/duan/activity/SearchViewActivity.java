@@ -31,7 +31,6 @@ import java.util.ArrayList;
 public class SearchViewActivity extends AppCompatActivity {
     private ArrayList<SanPham> list;
     private SanPhamAdapter sanPhamAdapter;
-    private Button btn_all;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +40,9 @@ public class SearchViewActivity extends AppCompatActivity {
         SearchView searchView=findViewById(R.id.searchView);
         RecyclerView recyclerView=findViewById(R.id.recyclerView);
         ImageView ic_setting=findViewById(R.id.ic_setting);
-        btn_all=findViewById(R.id.btn_all);
 
         //set click btn_all
-        btn_all.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(recyclerView.getVisibility()==View.VISIBLE){
-                    recyclerView.setVisibility(View.GONE);
-                }
-                else {
-                    recyclerView.setVisibility(View.VISIBLE);
-                }
-            }
-        });
+
         
         ic_setting.setOnClickListener(new View.OnClickListener() {
             @Override

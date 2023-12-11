@@ -33,8 +33,7 @@ mine"
     <com.google.android.material.textfield.TextInputLayout
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:endIconMode="password_toggle">
+        android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtmatkhau"
             android:layout_width="match_parent"
@@ -52,8 +51,7 @@ mine"
     <com.google.android.material.textfield.TextInputLayout
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:endIconMode="password_toggle">
+        android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtRematkhau"
             android:layout_width="match_parent"

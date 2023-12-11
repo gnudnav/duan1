@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <androidx.viewpager.widget.ViewPager
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="30dp"
         android:layout_height="475dp"
@@ -26,7 +26,7 @@
         android:layout_marginHorizontal="30dp"
         android:background="@drawable/custome_btn"
         android:text="Create Account"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:textColor="#fff"/>
     <TextView
         android:id="@+id/txtAcount"
@@ -36,6 +36,6 @@
         android:gravity="center"
         android:textColor="#5458C0"
         android:textStyle="bold"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="40dp"/>
 
 </LinearLayout>

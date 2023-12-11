@@ -1,5 +1,6 @@
 package com.example.duan.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.duan.R;
 import com.example.duan.activity.SearchViewActivity;
 import com.example.duan.adapter.ViewPager2FragmentAdapter;
+import com.example.duan.dao.NguoiDungDao;
+import com.example.duan.model.NguoiDung;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -32,7 +35,15 @@ public class Home_Fragment extends Fragment {
         TabLayout tabLayout=view.findViewById(R.id.TabLayout);
         ViewPager2 viewPager2=view.findViewById(R.id.ViewPager);
         ImageView ic_searchView=view.findViewById(R.id.ic_searchView);
-        TextView txt_ten=view.findViewById(R.id.txt_ten);
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("dataUser", Context.MODE_PRIVATE);
+        int manguoidung=sharedPreferences.getInt("manguoidung",-1);
+
+        NguoiDungDao nguoiDungDao=new NguoiDungDao(getContext());
+        NguoiDung nguoiDung=nguoiDungDao.getNguoiDungByID(manguoidung);
+        if(nguoiDung!=null){
+            TextView txt_ten=view.findViewById(R.id.txt_ten);
+            txt_ten.setText(nguoiDung.getHoten());
+        }
         ic_searchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

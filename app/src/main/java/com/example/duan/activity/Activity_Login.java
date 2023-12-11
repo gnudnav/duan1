@@ -18,14 +18,10 @@ import com.example.duan.model.SanPham;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class Activity_Login extends AppCompatActivity {
-
     private TextInputEditText edttendangnhap,edtmatkhau;
     private TextView txtquenmk;
     private AppCompatButton btndangnhap;
     private NguoiDungDao nguoiDungDao;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +50,8 @@ public class Activity_Login extends AppCompatActivity {
                     }
                 }else{
                     if (check){
-                        int manguoidung=sharedPreferences.getInt("manguoidung",-1);
-                        Toast.makeText(Activity_Login.this, "Bạn đăng nhập thành công"+manguoidung, Toast.LENGTH_SHORT).show();
+//                        int manguoidung=sharedPreferences.getInt("manguoidung",-1);
+                        Toast.makeText(Activity_Login.this, "Bạn đăng nhập thành công", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Activity_Login.this, MainActivity.class));
                     }else{
                         Toast.makeText(Activity_Login.this, "Sai tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();

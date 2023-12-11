@@ -69,16 +69,14 @@ public class NguoiDungDao {
         long check=sqLiteDatabase.update("NGUOIDUNG",contentValues,"manguoidung=?",new String[]{String.valueOf(manguoidung)});
         return check!=-1;
     }
-    public boolean updateAllPasswords(String newPassword) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("matkhau", newPassword);
-
-        int rowsAffected = db.update("NGUOIDUNG", values, null, null);
-
-//        Log.d("DbHelper", "Rows affected: " + rowsAffected);
-
-        return rowsAffected > 0;
+    public boolean DoiNguoiDung(int manguoidung,String hoten,String diachi,int sdt){
+        SQLiteDatabase sqLiteDatabase=dbHelper.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put("hoten",hoten);
+        values.put("diachi",diachi);
+        values.put("sdt",sdt);
+        long check=sqLiteDatabase.update("NGUOIDUNG",values,"manguoidung=?",new String[]{String.valueOf(manguoidung)});
+        return check!=-1;
     }
     public boolean kiemtrasdtTonTai(int sdt) {
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
@@ -87,5 +85,31 @@ public class NguoiDungDao {
         boolean exists = cursor.getCount() > 0;
         cursor.close();
         return exists;
+    }
+    public NguoiDung getNguoiDungByID(int manguoidung){
+        SQLiteDatabase sqLiteDatabase=dbHelper.getWritableDatabase();
+        NguoiDung nguoiDung=null;
+        Cursor cursor=sqLiteDatabase.query("NGUOIDUNG",null,"manguoidung=?",new String[]{String.valueOf(manguoidung)},null,null,null);
+        if(cursor!=null&&cursor.moveToFirst()){
+            nguoiDung=cursorToNguoiDung(cursor);
+            cursor.close();
+        }
+        sqLiteDatabase.close();
+        return nguoiDung;
+
+    }
+
+    private NguoiDung cursorToNguoiDung(Cursor cursor) {
+        NguoiDung nguoiDung = new NguoiDung();
+        nguoiDung.setManguoidung(cursor.getInt(cursor.getColumnIndex("manguoidung")));
+        nguoiDung.setSdt(cursor.getInt(cursor.getColumnIndex("sdt")));
+        nguoiDung.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+        nguoiDung.setDiachi(cursor.getString(cursor.getColumnIndex("diachi")));
+        nguoiDung.setTentaikhoan(cursor.getString(cursor.getColumnIndex("tentaikhoan")));
+        nguoiDung.setMatkhau(cursor.getString(cursor.getColumnIndex("matkhau")));
+        nguoiDung.setHoten(cursor.getString(cursor.getColumnIndex("hoten")));
+        nguoiDung.setRole(cursor.getInt(cursor.getColumnIndex("role")));
+
+        return nguoiDung;
     }
 }

@@ -16,12 +16,20 @@
             android:src="@drawable/ic_person" />
         <TextView
             android:paddingLeft="10dp"
+            android:id="@+id/hi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hi,"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/img"/>
+        <TextView
+            android:paddingLeft="6dp"
             android:id="@+id/txt_ten"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hi,Van Dung"
+            android:text="Van Dung"
             android:textStyle="bold"
-            android:layout_toRightOf="@id/img"/>
+            android:layout_toRightOf="@id/hi"/>
         <TextView
 
             android:paddingLeft="10dp"

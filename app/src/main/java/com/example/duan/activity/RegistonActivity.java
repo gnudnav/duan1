@@ -60,8 +60,8 @@ public class RegistonActivity extends AppCompatActivity {
                     // Kiểm tra số điện thoại
                     if (kiemtrasdt(sdt)) {
                         if (check) {
-                            int manguoidung = sharedPreferences.getInt("manguoidung", -1);
-                            Toast.makeText(RegistonActivity.this, "Bạn đã đăng ký thành công" + manguoidung, Toast.LENGTH_SHORT).show();
+//                            int manguoidung = sharedPreferences.getInt("manguoidung", -1);
+                            Toast.makeText(RegistonActivity.this, "Bạn đã đăng ký thành công", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(RegistonActivity.this, Activity_Login.class));
                         } else {
                             Toast.makeText(RegistonActivity.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
@@ -72,6 +72,7 @@ public class RegistonActivity extends AppCompatActivity {
                 }
             }
         });
+
 
 
 

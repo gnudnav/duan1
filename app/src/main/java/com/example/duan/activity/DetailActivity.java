@@ -1,6 +1,7 @@
 package com.example.duan.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,7 +27,7 @@ public class DetailActivity extends AppCompatActivity  {
     private int quantity=1;
     private TextView txt_quantity,txt_tensanpham,txt_giasanpham;
     private ImageView ic_cart,ic_heart,ic_back,img_sanpham,dautru,daucong;
-    private Button btn_add;
+    private AppCompatButton btn_add;
     private boolean isHeartRed=false;
     private CTHDDao cthdDao;
     private SanPhamDao sanPhamDao;
@@ -77,7 +78,7 @@ public class DetailActivity extends AppCompatActivity  {
                 // Thêm vào bảng CTHD trong CTHDDao
                 if (mahoadon!=-1&&cthdDao.themCTHD(masanpham,mahoadon,1,quantity)) {
                     // Thông báo thành công
-                    Toast.makeText(DetailActivity.this, "Thêm thành công vào giỏ hàng"+manguoidung, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailActivity.this, "Thêm thành công vào giỏ hàng", Toast.LENGTH_SHORT).show();
                     cthdDao.updateSoLuong(masanpham,quantity);
                 } else {
                     // Thông báo thất bại

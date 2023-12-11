@@ -49,10 +49,32 @@ public class Activity_Payment extends AppCompatActivity {
         btn_confirm=findViewById(R.id.btn_confirm);
         TextView txt_quantity=findViewById(R.id.txt_quantity);
         recyclerView_cthd=findViewById(R.id.recyclerView_cthd);
+        int manguoidung=sharedPreferences.getInt("manguoidung",-1);
+
 
         TextView txttennguoidung=findViewById(R.id.txt_tennguoidung);
         TextView txtsdt=findViewById(R.id.txt_sdt);
         TextView txtdiachi=findViewById(R.id.txt_diachi);
+        NguoiDungDao nguoiDungDao=new NguoiDungDao(this);
+        NguoiDung nguoiDung=nguoiDungDao.getNguoiDungByID(manguoidung);
+        if(nguoiDung!=null){
+            txttennguoidung.setText(nguoiDung.getHoten());
+            txtsdt.setText(String.valueOf(nguoiDung.getSdt()));
+            txtdiachi.setText(nguoiDung.getDiachi());
+        }
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_Payment.this, Activity_New_Address.class);
+
+                // Đóng gói dữ liệu và truyền qua Intent
+                intent.putExtra("tennguoidung", nguoiDung.getHoten());
+                intent.putExtra("sdt", nguoiDung.getSdt());
+                intent.putExtra("diachi", nguoiDung.getDiachi());
+
+                startActivity(intent);
+            }
+        });
 
 
         cthdDao=new CTHDDao(this);
@@ -90,7 +112,6 @@ public class Activity_Payment extends AppCompatActivity {
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int manguoidung=sharedPreferences.getInt("manguoidung",-1);
                 int mahoadon=hoaDonDao.themHD(manguoidung);
                 if(cthdDao.updateTrangThaiHD(mahoadon)){
                     // Nếu cập nhật thành công, chuyển đến màn hình thanh toán
